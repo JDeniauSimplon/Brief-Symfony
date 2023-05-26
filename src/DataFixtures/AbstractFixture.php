@@ -10,6 +10,8 @@ abstract class AbstractFixture extends Fixture
 {
     protected Generator $faker;
 
+    // protected UserPasswordHasher $passwordHasher;
+
     public function __construct()
     {
         $this->faker = Factory::create('fr_FR');

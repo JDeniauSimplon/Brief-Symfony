@@ -17,6 +17,8 @@ class UserFixtures extends AbstractFixture
 						// Instancie un objet Product avec un nom
             $user = new User();
             $user->setName($this->faker->word());
+            $user->setEmail($this->faker->email())
+            ->setPassword($this->faker->password());
 
 						// Enregistre le produit fraîchement créé, à faire à chaque tour de boucle
             $manager->persist($category);
