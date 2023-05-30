@@ -1,17 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block homeTitle %}{{homeTitle}}{% endblock %}
+{% block homeTitle %}{{ homeTitle }}{% endblock %}
 
 {% block body %}
 
-{% for ride in rides %}
-    <div>
-        <h3>{{ ride.departure }}</h3>
-        <p>{{ ride.destination}}</p>
-        <!-- Ajoutez ici d'autres propriétés de l'objet Offer que vous souhaitez afficher -->
-        <a href="{{ path('app_homepage', { 'id': ride.id }) }}">Réserver une place</a>
-    </div>
-{% endfor %}
-
+<div class="card-container">
+    {% for ride in rides %}
+        <div class="card">
+            <h3>{{ ride.departure }}</h3>
+            <p>{{ ride.destination }}</p>
+            <p>Places disponibles : {{ ride.seats }}</p>
+            <p>Prix : {{ ride.price }}</p>
+            <p>Date : {{ ride.date|date('d/m/Y H:i') }}</p>
+            <p>Conducteur : {{ ride.driver.id }} </p>
+            <p>Règles :
+                {% for rule in ride.rules %}
+                    {{ rule.name }}
+                    {% if not loop.last %}, {% endif %}
+                {% endfor %}
+            </p>
+            <p>Date de création : {{ ride.created|date('d/m/Y H:i') }}</p>
+            <a href="{{ path('app_homepage', { 'id': ride.id }) }}">Réserver une place</a>
+        </div>
+    {% endfor %}
+</div>
 
 {% endblock %}
