@@ -28,13 +28,10 @@ class Rule
     #[ORM\ManyToMany(targetEntity: Ride::class, mappedBy: 'rules')]
     private Collection $rides;
 
-    #[ORM\ManyToMany(targetEntity: RuleRide::class, mappedBy: 'rule_id')]
-    private Collection $ride_id;
 
     public function __construct()
     {
         $this->rides = new ArrayCollection();
-        $this->ride_id = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -105,30 +102,4 @@ class Rule
         return $this;
     }
 
-    /**
-     * @return Collection<int, RuleRide>
-     */
-    public function getRideId(): Collection
-    {
-        return $this->ride_id;
-    }
-
-    public function addRideId(RuleRide $rideId): self
-    {
-        if (!$this->ride_id->contains($rideId)) {
-            $this->ride_id->add($rideId);
-            $rideId->addRuleId($this);
-        }
-
-        return $this;
-    }
-
-    public function removeRideId(RuleRide $rideId): self
-    {
-        if ($this->ride_id->removeElement($rideId)) {
-            $rideId->removeRuleId($this);
-        }
-
-        return $this;
-    }
 }
