@@ -3,10 +3,13 @@
 namespace App\Entity;
 
 use App\Repository\RideRepository;
+use App\Entity\User;
+use App\Entity\Rule;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+
 
 #[ORM\Entity(repositoryClass: RideRepository::class)]
 class Ride
@@ -39,7 +42,7 @@ class Ride
 
     #[ORM\ManyToOne(inversedBy: 'rides')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?user $driver = null;
+    private ?User $driver = null;
 
     #[ORM\ManyToMany(targetEntity: rule::class, inversedBy: 'rides')]
     private Collection $rules;

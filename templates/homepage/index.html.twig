@@ -4,6 +4,14 @@
 
 {% block body %}
 
-<p> chambery city zoo</p>
+{% for ride in rides %}
+    <div>
+        <h3>{{ ride.departure }}</h3>
+        <p>{{ ride.destination}}</p>
+        <!-- Ajoutez ici d'autres propriétés de l'objet Offer que vous souhaitez afficher -->
+        <a href="{{ path('app_homepage', { 'id': ride.id }) }}">Réserver une place</a>
+    </div>
+{% endfor %}
+
 
 {% endblock %}
