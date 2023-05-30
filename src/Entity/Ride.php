@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+
 use App\Repository\RideRepository;
 use App\Entity\User;
 use App\Entity\Rule;
@@ -40,8 +41,8 @@ class Ride
     #[ORM\OneToMany(mappedBy: 'ride', targetEntity: Reservation::class)]
     private Collection $reservations;
 
-    #[ORM\ManyToOne(inversedBy: 'rides')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'rides')]
+    #[ORM\JoinColumn(name: 'driver_id', referencedColumnName: 'id', nullable: false)]
     private ?User $driver = null;
 
     #[ORM\ManyToMany(targetEntity: rule::class, inversedBy: 'rides')]
@@ -160,12 +161,12 @@ class Ride
         return $this;
     }
 
-    public function getDriver(): ?user
+    public function getDriver(): ?User
     {
         return $this->driver;
     }
 
-    public function setDriver(?user $driver): self
+    public function setDriver(?User $driver): self
     {
         $this->driver = $driver;
 
