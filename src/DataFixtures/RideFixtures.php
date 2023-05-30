@@ -1,44 +1,45 @@
 <?php
+    namespace App\DataFixtures;
 
-namespace App\DataFixtures;
+    use App\Entity\Ride;
+    use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+    use Doctrine\Persistence\ObjectManager;
+    use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+    use Faker\Factory;
 
-use App\Entity\Ride;
-use Doctrine\Persistence\ObjectManager;
-use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
-use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+class RideFixtures extends AbstractFixture implements DependentFixtureInterface {
 
-class RideFixtures extends AbstractFixture implements DependentFixtureInterface 
-{
-    public function load(ObjectManager $manager)
-    {
-        for ($i = 0; $i < 30; $i ++) {
-            // Générer un nombre aléatoire de ride pour chaque utilisateur
-            $numRides = rand(0, 1); // Générer 0 ou 1 ride
-    
-            for ($j = 0; $j < $numRides; $j++) {
-                $ride = new Ride();
-                $ride->setDeparture($this->faker->city);
-                $ride->setDestination($this->faker->city);
-                $ride->setSeats($this->faker->numberBetween($min = 2, $max = 7));
-                $ride->setPrice($this->faker->numberBetween($min = 1, $max = 20));
-                $ride->setDate($this->faker->dateTimeThisYear());
-                $ride->setCreated($this->faker->dateTimeThisYear());
-    
+    public function load (ObjectManager $manager):void {
+
+        for ($i=0; $i < 30; $i++) { 
+            $ride = new Ride();
+            $ride->setDeparture($this->faker->word());
+            $ride->setDestination($this->faker->word());
+            $ride->setSeats($this->faker->numberBetween($min = 2, $max = 7));
+            $ride->setPrice(round($this->faker->randomFloat(), 2));
+            $ride->setDate($this->faker->dateTimeBetween('-1 year', 'now'));
+            $ride->setCreated($this->faker->dateTimeBetween('-1 year', 'now'));
+
                 // Récupérer une référence d'utilisateur comme propriétaire
                 $userReference = $this->getReference('user_' . $i);
                 $ride->setDriver($userReference);
-    
-                $manager->persist($ride);
-            }
+
+
+                // Table intermediaire ride_rule
+                $this->setReference('ride_' . $i, $ride);
+                
+            
+            $manager->persist($ride);   
         }
-    
         $manager->flush();
+    }
+
+    public function getDependencies() {
+        return [
+            UserFixtures::class
+        ];
+    }
 }
 
-    public function getDependencies()
-{
-    return [
-        UserFixtures::class,
-    ];
-}
-}
+
+?>
