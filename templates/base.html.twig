@@ -13,7 +13,16 @@
         {% endblock %}
 
     </head>
-    <header><h1>Nous sommes sur la {{homeTitle}}! ✅</h1></header>
+<header class="navbar navbarFixed">
+    <a href="{{ path("app_homepage") }}" class="iconButton">
+        <span class="icon"></span>
+    </a>
+    <div class="search-bar">
+    <input type="text" class="search-input" placeholder="Rechercher...">
+    <button class="searchButton"><span class="iconLoupe"></span></button>
+</div>
+<a href="#" class="unregisteredUser"><span class="iconUnregisteredUser"></span></a>
+</header>
     <body>
         {% block body %}
         {% endblock %}

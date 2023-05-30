@@ -1,45 +1,51 @@
 <?php
-    namespace App\DataFixtures;
 
-    use App\Entity\Ride;
-    use Doctrine\Common\DataFixtures\DependentFixtureInterface;
-    use Doctrine\Persistence\ObjectManager;
-    use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
-    use Faker\Factory;
+namespace App\DataFixtures;
 
-class RideFixtures extends AbstractFixture implements DependentFixtureInterface {
+use App\Entity\Ride;
+use Doctrine\Persistence\ObjectManager;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
-    public function load (ObjectManager $manager):void {
 
-        for ($i=0; $i < 30; $i++) { 
+class RideFixtures extends AbstractFixture implements DependentFixtureInterface
+{
+        // La méthode "load" est imposé par la classe Fixture que la classe AbstractFixture étend
+        // C'est cette méthode qui permet de créer des fixtures
+        public function load(ObjectManager $manager)
+        {
+          for ($i = 0; $i < 30; $i++) {
+      
+            // Instancie un objet Product avec un nom
             $ride = new Ride();
+      
             $ride->setDeparture($this->faker->word());
             $ride->setDestination($this->faker->word());
-            $ride->setSeats($this->faker->numberBetween($min = 2, $max = 7));
-            $ride->setPrice(round($this->faker->randomFloat(), 2));
-            $ride->setDate($this->faker->dateTimeBetween('-1 year', 'now'));
-            $ride->setCreated($this->faker->dateTimeBetween('-1 year', 'now'));
+            $ride->setSeats($this->faker->numberBetween(0,4));
+            $ride->setPrice($this->faker->numberBetween(1,50));
+            $ride->setDate($this->faker->dateTimeThisMonth());
+            $ride->setDriver($this->getReference("user_" . $this->faker->numberBetween(0, 29)));
+            $ride->addRule($this->getReference("rule_" . $this->faker->numberBetween(0, 29)));
+            $dateString = $this->faker->date();
+            $createdDate = new \DateTime($dateString);
+      
+            $ride->setCreated($createdDate);
+      
+            $this->setReference('ride_' . $i, $ride);
 
-                // Récupérer une référence d'utilisateur comme propriétaire
-                $userReference = $this->getReference('user_' . $i);
-                $ride->setDriver($userReference);
-
-
-                // Table intermediaire ride_rule
-                $this->setReference('ride_' . $i, $ride);
-                
-            
-            $manager->persist($ride);   
+            // Enregistre le produit fraîchement créé, à faire à chaque tour de boucle
+            $manager->persist($ride);
+          }
+      
+          // Une fois la boucle terminée je persiste les produits fraîchement créés
+          $manager->flush();
         }
-        $manager->flush();
-    }
-
-    public function getDependencies() {
-        return [
-            UserFixtures::class
-        ];
-    }
-}
-
-
-?>
+        
+        public function getDependencies()
+        {
+            return [
+                UserFixtures::class,
+                RuleFixtures::class,
+            ];
+        }
+    
+      }

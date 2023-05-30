@@ -13,13 +13,13 @@ class RuleFixtures extends AbstractFixture implements DependentFixtureInterface 
         for ($i=0; $i < 30; $i++) { 
             $rule = new Rule();
             $rule->setName($this->faker->name());
-            $rule->setDescription($this->faker->sentence(10));
+            $rule->setDescription($this->faker->word());
 
                 // Récupérer une référence d'utilisateur comme propriétaire
                 $userReference = $this->getReference('user_' . $i);
                 $rule->setAuthor($userReference);
 
-            
+            $this->setReference('rule_' . $i, $rule);
             $manager->persist($rule);   
         }
         $manager->flush();

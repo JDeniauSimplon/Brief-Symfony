@@ -4,18 +4,18 @@
 
 {% block body %}
 
-<div class="card-container">
+<div class="ridesContainer">
     {% for ride in rides %}
         <div class="card">
             <h3>{{ ride.departure }}</h3>
             <p>{{ ride.destination }}</p>
-            <p>Places disponibles : {{ ride.seats }}</p>
-            <p>Prix : {{ ride.price }}</p>
-            <p>Date : {{ ride.date|date('d/m/Y H:i') }}</p>
-            <p>Conducteur : {{ ride.driver.id }} </p>
+            <p>{{ ride.seats }} places disponibles</p>
+            <p>{{ ride.price }} €</p>
+            <p>Créé le {{ ride.date|date('d/m/Y \\à H\\hi', 'Europe/Paris') }}</p>
+            <p>Conducteur : {{ ride.driver.getFirstName() }} {{ ride.driver.getLastName() }}</p>
             <p>Règles :
                 {% for rule in ride.rules %}
-                    {{ rule.name }}
+                    <span>{{ (rule.name) }} / {{ (rule.description) }}</span>
                     {% if not loop.last %}, {% endif %}
                 {% endfor %}
             </p>
