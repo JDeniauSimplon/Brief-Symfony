@@ -21,8 +21,14 @@
     <input type="text" class="search-input" placeholder="Rechercher...">
     <button class="searchButton"><span class="iconLoupe"></span></button>
 </div>
-<a href="{{path('app_login')}}" class="unregisteredUser"><span class="iconUnregisteredUser"></span></a>
-<a href="{{path('app_register')}}" class="unregisteredUser"><span class="iconUnregisteredUser"></span></a>
+<section class="logButton">
+    {% if app.user %}
+        <a href="{{path('app_logout')}}" class="unregisteredUser"><span class="iconLogout"></span></a>
+    {% else %}
+        <a href="{{path('app_login')}}" class="unregisteredUser"><span class="iconUnregisteredUser"></span></a>
+        <a href="{{path('app_register')}}" class="unregisteredUser"><span class="iconRegister"></span></a>
+    {% endif %}
+</section>
 </header>
     <body>
         {% block body %}
