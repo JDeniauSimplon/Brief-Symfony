@@ -12,10 +12,10 @@
             <p>{{ ride.seats }} places disponibles</p>
             <p>{{ ride.price }} €</p>
             <p>Créé le {{ ride.date|date('d/m/Y \\à H\\hi', 'Europe/Paris') }}</p>
-            <p>Conducteur : {{ ride.driver.getFirstName() }} {{ ride.driver.getLastName() }}</p>
-            <p>Règles :
+            <p>{{ ride.driver.getFirstName() }} {{ ride.driver.getLastName() }}</p>
+            <p>
                 {% for rule in ride.rules %}
-                    <span>{{ (rule.name) }} / {{ (rule.description) }}</span>
+                    <span>{{ (rule.name) }} : {{ (rule.description) }}</span>
                     {% if not loop.last %}, {% endif %}
                 {% endfor %}
             </p>
