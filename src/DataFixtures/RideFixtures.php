@@ -25,8 +25,7 @@ class RideFixtures extends AbstractFixture implements DependentFixtureInterface
             $ride->setDate($this->faker->dateTimeThisMonth());
             $ride->setDriver($this->getReference("user_" . $this->faker->numberBetween(0, 29)));
             $ride->addRule($this->getReference("rule_" . $this->faker->numberBetween(0, 29)));
-            $dateString = $this->faker->date();
-            $createdDate = new \DateTime($dateString);
+            $createdDate = new \DateTime();
       
             $ride->setCreated($createdDate);
       

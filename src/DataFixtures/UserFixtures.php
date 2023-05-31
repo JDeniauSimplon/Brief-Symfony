@@ -18,7 +18,7 @@ class UserFixtures extends AbstractFixture
             $user->setEmail($this->faker->email());
 
             $plainPassword = $this->faker->password();
-            $encodedPassword = $this->passwordHasher->hashPassword($user, $plainPassword);
+            $encodedPassword = $this->passwordHasher->hashPassword($user, '12345');
             $user->setPassword($encodedPassword);
 
             $manager->persist($user);

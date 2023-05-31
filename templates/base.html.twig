@@ -21,7 +21,8 @@
     <input type="text" class="search-input" placeholder="Rechercher...">
     <button class="searchButton"><span class="iconLoupe"></span></button>
 </div>
-<a href="#" class="unregisteredUser"><span class="iconUnregisteredUser"></span></a>
+<a href="{{path('app_login')}}" class="unregisteredUser"><span class="iconUnregisteredUser"></span></a>
+<a href="{{path('app_register')}}" class="unregisteredUser"><span class="iconUnregisteredUser"></span></a>
 </header>
     <body>
         {% block body %}

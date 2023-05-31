@@ -8,10 +8,10 @@
     {% for ride in rides %}
         <div class="card">
             <h3>{{ ride.departure }}</h3>
-            <p>{{ ride.destination }}</p>
+            <h3>{{ ride.destination }}</h3>
             <p>{{ ride.seats }} places disponibles</p>
             <p>{{ ride.price }} €</p>
-            <p>Créé le {{ ride.date|date('d/m/Y \\à H\\hi', 'Europe/Paris') }}</p>
+            <p>Départ le {{ ride.date|date('d/m/Y \\à H\\hi', 'Europe/Paris') }}</p>
             <p>{{ ride.driver.getFirstName() }} {{ ride.driver.getLastName() }}</p>
             <p>
                 {% for rule in ride.rules %}
@@ -19,7 +19,7 @@
                     {% if not loop.last %}, {% endif %}
                 {% endfor %}
             </p>
-            <p>Date de création : {{ ride.created|date('d/m/Y H:i') }}</p>
+            <p>Crée le {{ ride.created|date('d/m/Y H:i') }}</p>
             <a href="{{ path('app_homepage', { 'id': ride.id }) }}">Réserver une place</a>
         </div>
     {% endfor %}
