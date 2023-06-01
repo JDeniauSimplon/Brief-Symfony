@@ -111,7 +111,8 @@ margin-left: 20px;
 .trajetContainer {
     display: flex;
     flex-direction: column;
-    gap: 75px;
+    gap: 30px;
+    padding-top: 10px;
 }
 
 .carLogo {
@@ -124,6 +125,40 @@ margin-left: 20px;
     position:absolute;
     margin-left: 8px;
     margin-bottom: 5px;
+}
+
+.driverLogo {
+    background-image: url(/assets/images/driver.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 57px;
+    height: 56px;
+}
+
+.driverName {
+    background-color: grey;
+    border: solid rgb(0, 0, 0) 1px;
+    border-radius: 10px;
+    width: 145px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.driverCard {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.blockDriver {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
 .carLogoContainer {
@@ -233,7 +268,21 @@ margin-left: 20px;
     border-top-right-radius: 7px;
     border-bottom-right-radius: 7px;
     border: solid black 2px;
+    display: flex;
+    flex-direction: column;
+
+    p {
+       
+    }
 }
+
+.bottomDriverCard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
 
 .card .blockCity h3 {
     font-size: 20px;
@@ -258,8 +307,7 @@ margin-left: 20px;
 
 .card a {
     display: block;
-    margin-top: 20px;
-    padding: 10px 20px;
+    padding: 5px 3px;
     background-color: #007bff;
     color: #fff;
     text-align: center;
