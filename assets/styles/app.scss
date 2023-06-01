@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+
 * {
     margin: 0px;
     padding: 0px;
@@ -33,7 +35,8 @@ body {
     height: 50px;
 
     &:hover {
-        transform: scale(1.05); /* Ajustez ce nombre pour changer la taille de l'icône lors du hover */
+        transform: scale(1.05);
+        /* Ajustez ce nombre pour changer la taille de l'icône lors du hover */
     }
 }
 
@@ -47,13 +50,14 @@ body {
     cursor: pointer;
 
     &:hover {
-        transform: scale(1.1); /* Ajustez ce nombre pour changer la taille de l'icône lors du hover */
+        transform: scale(1.1);
+        /* Ajustez ce nombre pour changer la taille de l'icône lors du hover */
     }
 }
 
 .iconButton {
-display: flex;
-margin-left: 20px;
+    display: flex;
+    margin-left: 20px;
 }
 
 .unregisteredUser {
@@ -70,7 +74,8 @@ margin-left: 20px;
     height: 47px;
 
     &:hover {
-        transform: scale(1.1); /* Ajustez ce nombre pour changer la taille de l'icône lors du hover */
+        transform: scale(1.1);
+        /* Ajustez ce nombre pour changer la taille de l'icône lors du hover */
     }
 }
 
@@ -85,9 +90,10 @@ margin-left: 20px;
     border: solid grey 2px;
 
     &:hover {
-        transform: scale(1.1); /* Ajustez ce nombre pour changer la taille de l'icône lors du hover */
+        transform: scale(1.1);
+        /* Ajustez ce nombre pour changer la taille de l'icône lors du hover */
     }
-    
+
 }
 
 .trajetLogo {
@@ -97,9 +103,9 @@ margin-left: 20px;
     background-size: cover;
     width: 16px;
     height: 118px;
-    position:absolute;
+    position: absolute;
     margin-left: 15px;
-    margin-bottom: 15px;
+    margin-bottom: -148px;
 }
 
 .trajetLogoContainer {
@@ -122,9 +128,9 @@ margin-left: 20px;
     background-size: cover;
     width: 31px;
     height: 25px;
-    position:absolute;
+    position: absolute;
     margin-left: 8px;
-    margin-bottom: 5px;
+    margin-bottom: -170px;
 }
 
 .driverLogo {
@@ -140,11 +146,12 @@ margin-left: 20px;
     background-color: grey;
     border: solid rgb(0, 0, 0) 1px;
     border-radius: 10px;
-    width: 145px;
+    width: 151px;
     height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'Fjalla One', sans-serif;
 }
 
 .driverCard {
@@ -176,7 +183,8 @@ margin-left: 20px;
     height: 51px;
 
     &:hover {
-        transform: scale(0.9); /* Ajustez ce nombre pour changer la taille de l'icône lors du hover */
+        transform: scale(0.9);
+        /* Ajustez ce nombre pour changer la taille de l'icône lors du hover */
     }
 }
 
@@ -190,7 +198,7 @@ margin-left: 20px;
 .searchButton {
     display: flex;
     align-items: center;
-    
+
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     outline: none;
@@ -205,7 +213,7 @@ margin-left: 20px;
     flex-direction: row;
     align-items: center;
 }
-    
+
 
 .search-input {
     height: 50px;
@@ -219,27 +227,57 @@ margin-left: 20px;
     padding-left: 10px;
 }
 
-.ridesContainer {
-    
+
+.userProfile {
+    background-color: grey;
+    border: solid rgb(0, 0, 0) 1px;
+    border-radius: 10px;
+    width: 95px;
+    height: 30px;
     display: flex;
-    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    font-family: "Fjalla One", sans-serif;
+}
+
+.ridesContainer {
+
+    display: flex;
     justify-content: center;
     background-color: grey;
     margin: 72px 20px 20px 20px;
     border-radius: 15px;
     overflow-x: auto;
-    white-space: nowrap;
     position: fixed;
-    top: 0; // Ajustez selon vos besoins
-    left: 0; // Ajustez selon vos besoins
-    height: calc(100% - 92px); // Ajuster en fonction de vos besoins
-    
+    top: 0;
+    left: 0;
+    height: calc(100% - 92px);
+    flex-wrap: wrap;
+    width: 97%;
+    align-items: center;
 
+}
+
+.accueilBanner {
+    background-image: url(/assets/images/bannerAccueil.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 523px;
+    height: 416px;
 }
 
 .card {
     display: flex;
     margin: 20px;
+
+    p {
+        font-family: 'Fjalla One', sans-serif;
+    }
+
+    h3 {
+        font-family: 'Fjalla One', sans-serif;
+    }
 }
 
 .halfCard1 {
@@ -261,7 +299,7 @@ margin-left: 20px;
 
 
 .halfCard2 {
-    width: 300px;
+    width: 296px;
     padding: 20px;
     background-color: #ffffff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -270,18 +308,17 @@ margin-left: 20px;
     border: solid black 2px;
     display: flex;
     flex-direction: column;
-
-    p {
-       
-    }
+    height: 133px;
+    gap: 15px;
 }
 
 .bottomDriverCard {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
-    margin-top: 20px;
+    margin-top: 18px;
 }
+
 
 
 .card .blockCity h3 {
@@ -305,27 +342,106 @@ margin-left: 20px;
     margin-right: 5px;
 }
 
+// .card a {
+//     display: block;
+//     padding: 5px 3px;
+//     background-color: #007bff;
+//     color: #fff;
+//     text-align: center;
+//     text-decoration: none;
+//     border-radius: 5px;
+//     transition: background-color 0.3s ease;
+// }
+
 .card a {
-    display: block;
-    padding: 5px 3px;
-    background-color: #007bff;
-    color: #fff;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+
+    background-image: url(/assets/images/infoIcon.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 53px;
+    height: 53px;
+    border-radius: 30px;
+
+    &:hover {
+        transform: scale(1.1);
+        /* Ajustez ce nombre pour changer la taille de l'icône lors du hover */
+    }
 }
 
-.card a:hover {
-    background-color: #0056b3;
-}
 
 .logButton {
     display: flex;
     padding-right: 50px;
     align-items: center;
+    gap: 10px;
 }
 
 .dateDepart {
     display: flex;
+}
+
+.accueilBouton {
+    background-color: grey;
+    border: solid rgb(0, 0, 0) 1px;
+    border-radius: 10px;
+    width: 151px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Fjalla One', sans-serif;
+}
+
+.listeBouton {
+    background-color: grey;
+    border: solid rgb(0, 0, 0) 1px;
+    border-radius: 10px;
+    width: 151px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Fjalla One', sans-serif;
+}
+
+.switchButtons {
+    display: flex;
+    gap: 175px;
+    padding-top: 10px;
+}
+
+.boiteSwitchButtons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.accueil {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+
+    .accueilCard {
+        width: 481px;
+        padding: 19px;
+        background-color: #9DB068;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border: solid black 2px;
+        border-radius: 10px;
+        // display: flex;
+        // align-items: center;
+        // justify-content: center;
+        padding-bottom: 6px;
+        // height: 79px;
+
+
+        .accueilCardContent {
+    
+            text-align: center;
+           
+            width: 100%;
+        }
+    }
 }
