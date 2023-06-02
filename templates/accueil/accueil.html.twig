@@ -9,16 +9,20 @@
     <div class="ridesContainer">
         <section class="boiteSwitchButtons">
             <section class="switchButtons">
-                <a href="{{ path("app_accueil") }}" class="accueilBouton">Accueil</a>
-                <a href="{{ path("app_homepage") }}" class="listeBouton">Liste des annonces</a>
+                <a href="{{ path("app_liste") }}" class="listeBouton">Liste des annonces</a>
             </section>
         </section>
         <section class="accueil">
             <div class="accueilCard">
-                <p class="accueilCardContent">Bienvenue sur Chamblacar,votre nouvelle plateforme de covoiturage ! Chez ChamblaCar, nous mettons en relation conducteurs et passagers qui souhaitent partager leur trajet. Notre objectif ? Rendre le transport plus économique, plus convivial et plus respectueux de l'environnement. Ensemble, rendons la route plus agréable !</p>
+                <p class="accueilCardContent">Bienvenue sur Chamblacar, votre nouvelle plateforme de covoiturage ! 🚗 <br /> Chez ChamblaCar, nous mettons en relation conducteurs et passagers qui souhaitent partager leur trajet.<br /> Notre objectif ? Rendre le transport plus économique, plus convivial et plus respectueux de l'environnement. 🌿 <br /> Ensemble, rendons la route plus agréable !</p>
             </div>
             <section class="accueilBanner">
             </section>
+            {% if not app.user %}
+            <a href="{{path('app_register')}}" class="inscriptionCard" title="S'inscrire">
+                <p class="accueilCardContent">S'inscrire dès maintenant !</p>
+            </a>
+            {% endif %}
         </section>
     </div>
 

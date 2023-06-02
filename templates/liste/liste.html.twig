@@ -10,7 +10,6 @@
 		<section class="boiteSwitchButtons">
 			<section class="switchButtons">
 				<a href="{{ path("app_accueil") }}" class="accueilBouton">Accueil</a>
-				<a href="{{ path("app_homepage") }}" class="listeBouton">Liste des annonces</a>
 			</section>
 		</section>
 		{% for ride in rides %}
@@ -54,7 +53,7 @@
 							€</p>
 						<p>{{ ride.seats }}
 							places disponibles</p>
-						<a href="{{ path('app_homepage', { 'id': ride.id }) }}"></a>
+						<a href="{{ path('app_liste', { 'id': ride.id }) }}"></a>
 					</section>
 					{# <p>
 																{% for rule in ride.rules %}

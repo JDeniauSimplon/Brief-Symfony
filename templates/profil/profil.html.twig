@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block homeTitle %}
+	{{ homeTitle }}
+{% endblock %}
+
+{% block body %}
+
+	<div class="ridesContainer">
+		<section class="boiteSwitchButtons">
+			<section class="switchButtons">
+				<p class="monProfil">MON PROFIL</p>
+                <a href="#" class="listeBouton">Mes trajets</a>
+                <a href="#" class="listeBouton">Mon véhicule</a>
+                <a href="#" class="listeBouton">Mes règles</a>
+			</section>
+		</section>
+		<div class="driverInformations">
+			<div class="driverLogoInformations"></div>
+			<div class="driverFullName">
+				<p>{{ app.user.firstName ~ ' ' ~ app.user.lastName }}</p>
+			</div>
+			<div class="driverFullInformations">
+				
+					<div class="informationsLine">
+                    <span class="informationName">EMAIL </span><span class="actualInformation">{{ app.user.email }}</span><a class="edit"></a>
+                    </div>
+					<div class="informationsLine">
+                    <span class="informationName">Mon mot de passe </span><span class="actualInformation">*********** </span><a class="edit"></a>
+                    </div>
+					<div class="informationsLine">
+                    <span class="informationName">NOM </span><span class="actualInformation"> {{ app.user.lastName }} </span><a class="edit"></a>
+                    </div>
+					<div class="informationsLine">
+                    <span class="informationName">PRENOM </span><span class="actualInformation"> {{ app.user.firstName }} </span><a class="edit"></a>
+                    </div>
+					<div class="informationsLine">
+                    <span class="informationName">TELEPHONE </span><span class="actualInformation"> {{ app.user.phone }} </span><a class="edit"></a>
+                    </div>
+                    <div class="informationsLine">
+                    <span class="informationName">INSCRIT DEPUIS LE </span><span class="actualInformation"> {{ app.user.created|date('d-m-Y') }} </span>
+                    </div>
+				
+			</div>
+		</div>
+		{# <div class="user-info">
+		            <p>Prénom : {{ app.user.firstName }}</p>
+		            <p>Nom : {{ app.user.lastName }}</p>
+		            <p>Email : {{ app.user.email }}</p>
+		            <p>Mot de passe : ****</p> 
+		            <p>Téléphone : {{ app.user.phone }}</p>
+		            <p>Date de création du compte : {{ app.user.created|date('d-m-Y') }}</p>
+		        </div>
+		    </div> #}
+
+	{% endblock %}

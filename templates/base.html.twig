@@ -14,21 +14,23 @@
 
     </head>
 <header class="navbar navbarFixed">
-    <a href="{{ path("app_homepage") }}" class="iconButton">
+    <a href="{{ path("app_accueil") }}" class="iconButton">
         <span class="icon"></span>
     </a>
-    <div class="search-bar">
-    <input type="text" class="search-input" placeholder="Rechercher...">
-    <button class="searchButton"><span class="iconLoupe"></span></button>
+    <div class="searchBar">
+    <input type="text" class="searchInput" placeholder="Rechercher...">
+    <button class="searchButton"><span class="iconLoupe" title="Rechercher"></span></button>
 </div>
 <section class="logButton">
     {% if app.user %}
-    <a href="{{path('app_profile')}}" class="userProfile">MON PROFILE</span></a>
-        <a href="{{path('app_logout')}}" class="unregisteredUser"><span class="iconLogout"></span></a>
+        {% if app.request.attributes.get('_route') != 'app_profil' %}
+            <a href="{{path('app_profil')}}" class="userProfil">MON PROFIL</a>
+        {% endif %}
+        <a href="{{path('app_logout')}}" class="unregisteredUser" title="Déconnexion"><span class="iconLogout"></span></a>
         
     {% else %}
-        <a href="{{path('app_login')}}" class="unregisteredUser"><span class="iconUnregisteredUser"></span></a>
-        <a href="{{path('app_register')}}" class="unregisteredUser"><span class="iconRegister"></span></a>
+        <a href="{{path('app_login')}}" class="unregisteredUser" title="Se connecter"><span class="iconUnregisteredUser"></span></a>
+        <a href="{{path('app_register')}}" class="unregisteredUser" title="S'inscrire"><span class="iconRegister"></span></a>
     {% endif %}
 </section>
 </header>

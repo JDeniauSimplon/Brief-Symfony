@@ -8,17 +8,17 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Ride;
 
-#[Route('/homepage')]
+#[Route('/liste')]
 
-class HomepageController extends AbstractController
+class ListeController extends AbstractController
 {
-    #[Route('/', name: 'app_homepage')]
+    #[Route('/', name: 'app_liste')]
     public function index(EntityManagerInterface $entityManager): Response
     {
         $rideRepository = $entityManager->getRepository(Ride::class);
         $rides = $rideRepository->findAll();
-        return $this->render('homepage/index.html.twig', [
-            'controller_name' => "page d'accueil",
+        return $this->render('liste/liste.html.twig', [
+            'controller_name' => "Liste d'annonces",
             'homeTitle' => "chamBlaCar",
             'rides' => $rides,
             
