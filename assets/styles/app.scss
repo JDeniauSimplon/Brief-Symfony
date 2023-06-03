@@ -5,9 +5,58 @@
     padding: 0px;
 }
 
+li {
+    list-style-type: none;
+}
+
 form {
-    background-color: white;
-    padding-top: 75px;
+
+    height: 515px;
+    width: 572px;
+    padding: 19px;
+    margin-top: 80px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: solid black 4px;
+    border-radius: 10px;
+    text-align: center;
+    font-family: "Fjalla One", sans-serif;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 24px;
+
+    .btn {
+        background-color: rgb(0, 0, 0);
+        color: white;
+
+        border-radius: 4px;
+        width: 151px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Fjalla One', sans-serif;
+
+        &:hover {
+            background-color: rgb(255, 255, 255);
+            color: rgb(0, 0, 0);
+
+        }
+
+    }
+
+    .form-group {
+        width: 200px;
+
+        input {
+            height: 27px;
+
+            border: solid black 3px;
+        }
+    }
 }
 
 body {
@@ -37,12 +86,12 @@ body {
 
     .logoAndSearchbar {
         display: flex;
-        gap: 10px;
+        gap: 15px;
 
         .iconButton {
             display: flex;
             margin-left: 20px;
-    
+
             .icon {
                 background-image: url(/assets/images/logo.svg);
                 background-position: center;
@@ -50,22 +99,22 @@ body {
                 background-size: cover;
                 width: 274px;
                 height: 50px;
-    
+
                 &:hover {
                     transform: scale(1.05);
                 }
             }
-    
+
         }
-    
+
         .searchBar {
-          
+
             display: flex;
             flex-direction: row;
             align-items: center;
-          
-        
-    
+
+
+
             .searchInput {
                 height: 50px;
                 width: 100%;
@@ -77,7 +126,7 @@ body {
                 font-size: 21px;
                 padding-left: 10px;
             }
-    
+
             .searchButton {
                 display: flex;
                 align-items: center;
@@ -87,7 +136,7 @@ body {
                 height: 50px;
                 border: none;
                 padding-right: 10px;
-    
+
                 .iconLoupe {
                     background-image: url(/assets/images/loupe.svg);
                     background-position: center;
@@ -96,7 +145,7 @@ body {
                     width: 32px;
                     height: 32px;
                     cursor: pointer;
-    
+
                     &:hover {
                         transform: scale(1.05);
                     }
@@ -104,7 +153,7 @@ body {
             }
         }
     }
-    
+
 
     .logButton {
         display: flex;
@@ -178,7 +227,7 @@ body {
 
         .userProfil {
             background-color: rgb(255, 255, 255);
-           
+
             border-radius: 4px;
             width: 150px;
             height: 30px;
@@ -219,6 +268,10 @@ body {
     justify-content: center;
     align-content: flex-start;
     border: solid white 4px;
+
+    h1 {
+        font-family: "Fjalla One", sans-serif;
+    }
 
     // style pour les boutons de switch entre les annonces et la page d'accueil
 
@@ -480,6 +533,7 @@ body {
     gap: 5px;
     align-items: center;
     padding-bottom: 5px;
+    margin-top: 20px;
 
     .accueilCard {
         width: 806px;
@@ -571,6 +625,7 @@ body {
     .driverFullInformations {
         display: flex;
         flex-direction: column;
+        padding-left: 62px;
 
     }
 
