@@ -29,19 +29,19 @@
 		</div>
 		<section class="logButton">
 			{% if app.request.attributes.get('_route') != 'app_liste' %}
-				<a href="{{ path('app_liste') }}" class="userProfil" title="Liste des annonces">LISTE DES ANNONCES</a>
+				<a href="{{ path('app_liste') }}" class="userProfil" title="Liste des annonces">LISTE DES ANNONCES 📢</a>
 			{% endif %}
 			{% if app.user %}
 				{% if app.request.attributes.get('_route') != 'app_profil' %}
-					<a href="{{ path('app_profil') }}" class="userProfil" title="Mon profil">MON PROFIL</a>
+					<a href="{{ path('app_profil') }}" class="userProfil" title="Mon profil">MON PROFIL ⚙️</a>
 				{% endif %}
-				<a href="{{ path('app_logout') }}" class="userProfil" title="Déconnexion">SE DECONNECTER</a>
+				<a href="{{ path('app_logout') }}" class="userProfil" title="Déconnexion">SE DECONNECTER 🔒</a>
 			{% else %}
             {% if app.request.attributes.get('_route') != 'app_login' %}
-				<a href="{{ path('app_login') }}" class="userProfil" title="Se connecter">SE CONNECTER</a>
+				<a href="{{ path('app_login') }}" class="userProfil" title="Se connecter">SE CONNECTER 🔓</a>
             {% endif %}
             {% if app.request.attributes.get('_route') != 'app_register' %}
-				<a href="{{ path('app_register') }}" class="userProfil" title="S'inscrire">S'INSCRIRE</a>
+				<a href="{{ path('app_register') }}" class="userProfil" title="S'inscrire">S'INSCRIRE 📝</a>
             {% endif %} 
 			{% endif %}
 		</section>

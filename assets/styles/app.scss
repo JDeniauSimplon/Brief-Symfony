@@ -11,13 +11,13 @@ li {
 
 form {
 
-    height: 656px;
+    min-height: 607px;
     width: 572px;
     padding: 19px;
-    margin-top: 17px;
+    margin-top: 9px;
+    margin-bottom: 9px;
     background-color: #ffffff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border: solid black 4px;
+
     border-radius: 10px;
     text-align: center;
     font-family: "Fjalla One", sans-serif;
@@ -26,7 +26,9 @@ form {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 24px;
+    gap: 22px;
+
+
 
     .emojiVerrou {
         font-size: 50px;
@@ -35,18 +37,18 @@ form {
     .btn {
         background-color: rgb(0, 0, 0);
         color: white;
-
         border-radius: 4px;
-        width: 151px;
-        height: 30px;
+        width: 226px;
+        height: 45px;
         display: flex;
         justify-content: center;
         align-items: center;
-        font-family: 'Fjalla One', sans-serif;
+        font-family: "Fjalla One", sans-serif;
+        font-size: 20px;
+        margin-top: 10px;
 
         &:hover {
-            background-color: rgb(255, 255, 255);
-            color: rgb(0, 0, 0);
+            cursor: pointer;
 
         }
 
@@ -69,6 +71,12 @@ form {
                 outline: none;
             }
         }
+    }
+
+    .alert {
+        font-size: 20px;
+        margin: 5px;
+        width: 400px;
     }
 }
 
@@ -170,9 +178,9 @@ body {
 
     .logButton {
         display: flex;
-        padding-right: 50px;
-        align-items: center;
-        gap: 20px;
+    padding-right: 28px;
+    align-items: center;
+    gap: 20px;
 
 
         .unregisteredUser {
@@ -250,6 +258,7 @@ body {
             font-family: "Fjalla One", sans-serif;
             text-decoration: none;
             color: black;
+            padding: 0 4px 0 4px;
 
             cursor: pointer;
 
@@ -293,15 +302,13 @@ body {
         display: flex;
         justify-content: flex-start;
         padding-left: 10px;
-        padding-top: 54px;
+        padding-bottom: 10px;
 
 
         .switchButtons {
             display: flex;
             gap: 10px;
             padding-top: 10px;
-            position: absolute;
-            top: 0;
 
             a {
                 text-decoration: none;
@@ -338,11 +345,7 @@ body {
                 align-items: center;
                 font-family: 'Fjalla One', sans-serif;
 
-                &:hover {
-                    background-color: black;
-                    color: white;
-                    border: solid rgb(255, 255, 255) 3px;
-                }
+            
             }
         }
 
@@ -579,13 +582,6 @@ body {
         display: flex;
         align-items: center;
         justify-content: center;
-
-
-        &:hover {
-            background-color: black;
-            color: white;
-            border: solid rgb(255, 255, 255) 4px;
-        }
     }
 
     .accueilBanner {
@@ -602,8 +598,9 @@ body {
 
 .driverInformations {
     width: 100%;
+    min-height: 551px;
     height: auto;
-    padding: 20px;
+    padding: 70px;
     background-color: #ffffff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     gap: 20px;
@@ -692,3 +689,4 @@ body {
         }
     }
 }
+

@@ -7,12 +7,12 @@
 {% block body %}
 
 	<div class="ridesContainer">
-		<section class="boiteSwitchButtons">
+		<section class="boiteSwitchButtons" id="monProfil">
 			<section class="switchButtons">
-				<p class="monProfil">MON PROFIL</p>
-                <a href="#" class="listeBouton">Mes trajets ⚙️</a>
-                <a href="#" class="listeBouton">Mon véhicule ⚙️</a>
-                <a href="#" class="listeBouton">Mes règles ⚙️</a>
+				<p class="monProfil">MON PROFIL ⚙️</p>
+				<a href="#mesTrajets" class="listeBouton">Mes trajets 📍</a>
+				<a href="#monVéhicule" class="listeBouton">Mon véhicule 🚗</a>
+				<a href="#mesRègles" class="listeBouton">Mes règles 📜</a>
 			</section>
 		</section>
 		<div class="driverInformations">
@@ -21,36 +21,74 @@
 				<p>{{ app.user.firstName ~ ' ' ~ app.user.lastName }}</p>
 			</div>
 			<div class="driverFullInformations">
-				
-					<div class="informationsLine">
-                    <span class="informationName">EMAIL </span><span class="actualInformation">{{ app.user.email }}</span><a class="edit"></a>
-                    </div>
-					<div class="informationsLine">
-                    <span class="informationName">MON MOT DE PASSE </span><span class="actualInformation">*********** </span><a class="edit"></a>
-                    </div>
-					<div class="informationsLine">
-                    <span class="informationName">NOM </span><span class="actualInformation"> {{ app.user.lastName }} </span><a class="edit"></a>
-                    </div>
-					<div class="informationsLine">
-                    <span class="informationName">PRENOM </span><span class="actualInformation"> {{ app.user.firstName }} </span><a class="edit"></a>
-                    </div>
-					<div class="informationsLine">
-                    <span class="informationName">TELEPHONE </span><span class="actualInformation"> {{ app.user.phone }} </span><a class="edit"></a>
-                    </div>
-                    <div class="informationsLine">
-                    <span class="informationName">INSCRIT DEPUIS LE </span><span class="actualInformation"> {{ app.user.created|date('d-m-Y') }} </span>
-                    </div>
-				
+				{{ form_start(form) }}
+				<div class="informationsLine">
+					<span class="informationName">EMAIL</span>
+					<span class="actualInformation">{{ form_widget(form.email, { 'attr': { 'contenteditable': 'true' } }) }}</span>
+					<a class="edit"></a>
+					<button class="validate" type="submit" style="display: none;">Valider</button>
+					<button class="cancel" style="display: none;">Annuler</button>
+				</div>
+				<div class="informationsLine">
+					<span class="informationName">NOM</span>
+					<span class="actualInformation">{{ form_widget(form.lastName, { 'attr': { 'contenteditable': 'true' } }) }}</span>
+					<a class="edit"></a>
+					<button class="validate" type="submit" style="display: none;">Valider</button>
+					<button class="cancel" style="display: none;">Annuler</button>
+				</div>
+				<div class="informationsLine">
+					<span class="informationName">PRENOM</span>
+					<span class="actualInformation">{{ form_widget(form.firstName, { 'attr': { 'contenteditable': 'true' } }) }}</span>
+					<a class="edit"></a>
+					<button class="validate" type="submit" style="display: none;">Valider</button>
+					<button class="cancel" style="display: none;">Annuler</button>
+				</div>
+				<div class="informationsLine">
+					<span class="informationName">TELEPHONE</span>
+					<span class="actualInformation">{{ form_widget(form.phone, { 'attr': { 'contenteditable': 'true' } }) }}</span>
+					<a class="edit"></a>
+					<button class="validate" type="submit" style="display: none;">Valider</button>
+					<button class="cancel" style="display: none;">Annuler</button>
+				</div>
+				<div class="informationsLine">
+					<span class="informationName">MOT DE PASSE</span>
+					<span class="actualInformation">{{ form_widget(form.password, { 'attr': { 'contenteditable': 'true' } }) }}</span>
+					<a class="edit"></a>
+					<button class="validate" type="submit" style="display: none;">Valider</button>
+					<button class="cancel" style="display: none;">Annuler</button>
+				</div>
+
+				<button type="submit">Mettre à jour</button>
+				{{ form_end(form) }}
 			</div>
 		</div>
-		{# <div class="user-info">
-		            <p>Prénom : {{ app.user.firstName }}</p>
-		            <p>Nom : {{ app.user.lastName }}</p>
-		            <p>Email : {{ app.user.email }}</p>
-		            <p>Mot de passe : ****</p> 
-		            <p>Téléphone : {{ app.user.phone }}</p>
-		            <p>Date de création du compte : {{ app.user.created|date('d-m-Y') }}</p>
-		        </div>
-		    </div> #}
+
+		<section class="boiteSwitchButtons" id="mesTrajets">
+			<section class="switchButtons">
+				<p class="monProfil">Mes trajets 📍</p>
+				<a href="#monVéhicule" class="listeBouton">Mon véhicule 🚗</a>
+				<a href="#mesRègles" class="listeBouton">Mes règles 📜</a>
+				<a href="#monProfil" class="listeBouton">Mon profil ⚙️</a>
+			</section>
+		</section>
+		<div class="driverInformations"></div>
+		<section class="boiteSwitchButtons" id="monVéhicule">
+			<section class="switchButtons">
+				<p class="monProfil">Mon véhicule 🚗</p>
+				<a href="#mesRègles" class="listeBouton">Mes règles 📜</a>
+				<a href="#monProfil" class="listeBouton">Mon profil ⚙️</a>
+				<a href="#mesTrajets" class="listeBouton">Mes trajets 📍</a>
+			</section>
+		</section>
+		<div class="driverInformations"></div>
+		<section class="boiteSwitchButtons" id="mesRègles">
+			<section class="switchButtons">
+				<p class="monProfil">Mes règles 📜</p>
+				<a href="#monProfil" class="listeBouton">Mon profil ⚙️</a>
+				<a href="#mesTrajets" class="listeBouton">Mes trajets 📍</a>
+				<a href="#monVéhicule" class="listeBouton">Mon véhicule 🚗</a>
+			</section>
+		</section>
+		<div class="driverInformations"></div>
 
 	{% endblock %}

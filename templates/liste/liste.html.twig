@@ -7,7 +7,9 @@
 {% block body %}
 
 	<div class="ridesContainer">
+
 		{% for ride in rides %}
+
 			<div class="card">
 
 				<div class="trajetLogoContainer">
@@ -51,14 +53,14 @@
 						<a href="{{ path('app_liste', { 'id': ride.id }) }}"></a>
 					</section>
 					{# <p>
-																{% for rule in ride.rules %}
-																	<span>{{ (rule.name) }}
-																		:
-																		{{ (rule.description) }}</span>
-																	{% if not loop.last %},
-																	{% endif %}
-																{% endfor %}
-															</p> #}
+																					{% for rule in ride.rules %}
+																						<span>{{ (rule.name) }}
+																							:
+																							{{ (rule.description) }}</span>
+																						{% if not loop.last %},
+																						{% endif %}
+																					{% endfor %}
+																				</p> #}
 
 
 				</div>
