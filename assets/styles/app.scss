@@ -11,10 +11,10 @@ li {
 
 form {
 
-    height: 515px;
+    height: 656px;
     width: 572px;
     padding: 19px;
-    margin-top: 80px;
+    margin-top: 17px;
     background-color: #ffffff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border: solid black 4px;
@@ -27,6 +27,10 @@ form {
     justify-content: center;
     flex-direction: column;
     gap: 24px;
+
+    .emojiVerrou {
+        font-size: 50px;
+    }
 
     .btn {
         background-color: rgb(0, 0, 0);
@@ -50,11 +54,20 @@ form {
 
     .form-group {
         width: 200px;
-
+        font-size: 22px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
         input {
             height: 27px;
-
             border: solid black 3px;
+            padding: 5px;
+            font-size: 20px;
+
+            &:focus {
+                outline: none;
+            }
         }
     }
 }
