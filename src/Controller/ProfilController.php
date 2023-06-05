@@ -13,7 +13,17 @@ use App\Form\ProfileFormType;
 class ProfilController extends AbstractController
 {
     #[Route('/profil', name: 'app_profil')]
-    public function index(Request $request, EntityManagerInterface $entityManager): Response
+    public function index(): Response
+    {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        
+        return $this->render('profil/profil.html.twig', [
+            'controller_name' => 'ProfilController',
+        ]);
+    }
+
+    #[Route('/profil/edit', name: 'app_profil_edit')]
+    public function editProfile(Request $request, EntityManagerInterface $entityManager): Response
     {
         $user = $this->getUser();
         $form = $this->createForm(ProfileFormType::class, $user);
@@ -28,7 +38,7 @@ class ProfilController extends AbstractController
             return $this->redirectToRoute('app_profil');
         }
 
-        return $this->render('profil/profil.html.twig', [
+        return $this->render('profil/edit_profil.html.twig', [
             'controller_name' => 'ProfilController',
             'form' => $form->createView()
         ]);

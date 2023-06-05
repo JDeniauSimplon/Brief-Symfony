@@ -21,45 +21,32 @@
 				<p>{{ app.user.firstName ~ ' ' ~ app.user.lastName }}</p>
 			</div>
 			<div class="driverFullInformations">
-				{{ form_start(form) }}
 				<div class="informationsLine">
 					<span class="informationName">EMAIL</span>
-					<span class="actualInformation">{{ form_widget(form.email, { 'attr': { 'contenteditable': 'true' } }) }}</span>
-					<a class="edit"></a>
-					<button class="validate" type="submit" style="display: none;">Valider</button>
-					<button class="cancel" style="display: none;">Annuler</button>
+					<span class="actualInformation">{{ app.user.email }}</span>
 				</div>
 				<div class="informationsLine">
 					<span class="informationName">NOM</span>
-					<span class="actualInformation">{{ form_widget(form.lastName, { 'attr': { 'contenteditable': 'true' } }) }}</span>
-					<a class="edit"></a>
-					<button class="validate" type="submit" style="display: none;">Valider</button>
-					<button class="cancel" style="display: none;">Annuler</button>
+					<span class="actualInformation">{{ app.user.lastName }}</span>
+
 				</div>
 				<div class="informationsLine">
 					<span class="informationName">PRENOM</span>
-					<span class="actualInformation">{{ form_widget(form.firstName, { 'attr': { 'contenteditable': 'true' } }) }}</span>
-					<a class="edit"></a>
-					<button class="validate" type="submit" style="display: none;">Valider</button>
-					<button class="cancel" style="display: none;">Annuler</button>
+					<span class="actualInformation">{{ app.user.firstName }}</span>
+
 				</div>
 				<div class="informationsLine">
 					<span class="informationName">TELEPHONE</span>
-					<span class="actualInformation">{{ form_widget(form.phone, { 'attr': { 'contenteditable': 'true' } }) }}</span>
-					<a class="edit"></a>
-					<button class="validate" type="submit" style="display: none;">Valider</button>
-					<button class="cancel" style="display: none;">Annuler</button>
+					<span class="actualInformation">{{ app.user.phone }}</span>
+
 				</div>
 				<div class="informationsLine">
 					<span class="informationName">MOT DE PASSE</span>
-					<span class="actualInformation">{{ form_widget(form.password, { 'attr': { 'contenteditable': 'true' } }) }}</span>
-					<a class="edit"></a>
-					<button class="validate" type="submit" style="display: none;">Valider</button>
-					<button class="cancel" style="display: none;">Annuler</button>
+					<span class="actualInformation">{{ app.user.password }}</span>
+
 				</div>
 
-				<button type="submit">Mettre à jour</button>
-				{{ form_end(form) }}
+				<a class="boutonRedirect" href="{{ path('app_profil_edit') }}">Modifier une ligne</a>
 			</div>
 		</div>
 

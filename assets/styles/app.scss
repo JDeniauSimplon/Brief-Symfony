@@ -34,25 +34,6 @@ form {
         font-size: 50px;
     }
 
-    .btn {
-        background-color: rgb(0, 0, 0);
-        color: white;
-        border-radius: 4px;
-        width: 226px;
-        height: 45px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: "Fjalla One", sans-serif;
-        font-size: 20px;
-        margin-top: 10px;
-
-        &:hover {
-            cursor: pointer;
-
-        }
-
-    }
 
     .form-group {
         width: 200px;
@@ -636,6 +617,26 @@ body {
         display: flex;
         flex-direction: column;
         padding-left: 62px;
+        align-items: center;
+
+
+ .boutonRedirect {
+    margin-top: 55px;
+    background-color: rgb(0, 0, 0);
+    border-radius: 4px;
+    width: 150px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Fjalla One", sans-serif;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    padding: 0 4px 0 4px;
+    cursor: pointer;
+
+    cursor: pointer;
+ }
 
     }
 
@@ -649,7 +650,7 @@ body {
     .informationName {
         background-color: #373737;
         border: solid rgb(0, 0, 0) 3px;
-        border-radius: 10px;
+        border-radius: 5px;
         width: 250px;
         height: 50px;
         display: flex;
@@ -662,9 +663,12 @@ body {
     }
 
     .actualInformation {
-        background-color: #394853;
+    
+     
+        
+            background-color: #394853;
         border: solid rgb(0, 0, 0) 3px;
-        border-radius: 10px;
+        border-radius: 5px;
         width: 250px;
         height: 50px;
         display: flex;
@@ -673,6 +677,53 @@ body {
         font-family: 'Fjalla One', sans-serif;
         padding-left: 100px;
         padding-right: 100px;
+        text-align: center;
+        
+    }
+
+    .validate {
+        background-color: rgb(255, 255, 255);
+
+        border-radius: 4px;
+        width: 150px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Fjalla One", sans-serif;
+        text-decoration: none;
+        color: black;
+        padding: 0 4px 0 4px;
+
+        cursor: pointer;
+
+        &:hover {
+            background-color: black;
+            color: white;
+
+        }
+        
+    }
+
+    .cancel {
+            background-color: rgb(255, 255, 255);
+    
+            border-radius: 4px;
+            width: 150px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: "Fjalla One", sans-serif;
+            text-decoration: none;
+            color: black;
+            padding: 0 4px 0 4px;
+            cursor: pointer;
+    
+            &:hover {
+                background-color: black;
+                color: white;
+            }
     }
 
     .edit {
