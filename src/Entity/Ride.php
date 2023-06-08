@@ -52,6 +52,7 @@ class Ride
     {
         $this->reservations = new ArrayCollection();
         $this->rules = new ArrayCollection();
+        $this->created = new \DateTime();
     }
 
     public function getId(): ?int

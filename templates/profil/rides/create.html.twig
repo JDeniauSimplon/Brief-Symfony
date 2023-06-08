@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block homeTitle %}
+    {{ homeTitle }}
+{% endblock %}
+
+{% block body %}
+    <div class="ridesContainer">
+        <div class="editProfileForm">
+            {{ form_start(rideForm) }}
+            {{ form_widget(rideForm) }}
+            <button type="submit">Create Ride</button>
+            {{ form_end(rideForm) }}
+        </div>
+        {{ form_errors(rideForm) }}
+    </div>
+{% endblock %}

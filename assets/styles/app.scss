@@ -28,6 +28,28 @@ form {
     flex-direction: column;
     gap: 22px;
 
+    #validation {
+        background-color: rgb(255, 255, 255);
+    
+        border-radius: 4px;
+        width: 150px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Fjalla One", sans-serif;
+        text-decoration: none;
+        color: black;
+        padding: 0 4px 0 4px;
+    
+        cursor: pointer;
+    
+        &:hover {
+            background-color: black;
+            color: white;
+    
+        }
+    }
 
 
     .emojiVerrou {
@@ -42,16 +64,8 @@ form {
         flex-direction: column;
         align-items: center;
         gap: 5px;
-        input {
-            height: 27px;
-            border: solid black 3px;
-            padding: 5px;
-            font-size: 20px;
 
-            &:focus {
-                outline: none;
-            }
-        }
+
     }
 
     .alert {
@@ -119,7 +133,7 @@ body {
 
             .searchInput {
                 height: 50px;
-                width: 100%;
+                width: 70%;
                 border-top-left-radius: 10px;
                 border-bottom-left-radius: 10px;
                 outline: none;
@@ -159,9 +173,9 @@ body {
 
     .logButton {
         display: flex;
-    padding-right: 28px;
-    align-items: center;
-    gap: 20px;
+        padding-right: 28px;
+        align-items: center;
+        gap: 20px;
 
 
         .unregisteredUser {
@@ -326,7 +340,7 @@ body {
                 align-items: center;
                 font-family: 'Fjalla One', sans-serif;
 
-            
+
             }
         }
 
@@ -620,25 +634,10 @@ body {
         align-items: center;
 
 
- .boutonRedirect {
-    margin-top: 55px;
-    background-color: rgb(0, 0, 0);
-    border-radius: 4px;
-    width: 150px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: "Fjalla One", sans-serif;
-    text-decoration: none;
-    color: rgb(255, 255, 255);
-    padding: 0 4px 0 4px;
-    cursor: pointer;
-
-    cursor: pointer;
- }
+     
 
     }
+
 
     .informationsLine {
         display: flex;
@@ -663,10 +662,10 @@ body {
     }
 
     .actualInformation {
-    
-     
-        
-            background-color: #394853;
+
+
+
+        background-color: #394853;
         border: solid rgb(0, 0, 0) 3px;
         border-radius: 5px;
         width: 250px;
@@ -678,7 +677,7 @@ body {
         padding-left: 100px;
         padding-right: 100px;
         text-align: center;
-        
+
     }
 
     .validate {
@@ -702,28 +701,28 @@ body {
             color: white;
 
         }
-        
+
     }
 
     .cancel {
-            background-color: rgb(255, 255, 255);
-    
-            border-radius: 4px;
-            width: 150px;
-            height: 30px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: "Fjalla One", sans-serif;
-            text-decoration: none;
-            color: black;
-            padding: 0 4px 0 4px;
-            cursor: pointer;
-    
-            &:hover {
-                background-color: black;
-                color: white;
-            }
+        background-color: rgb(255, 255, 255);
+
+        border-radius: 4px;
+        width: 150px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Fjalla One", sans-serif;
+        text-decoration: none;
+        color: black;
+        padding: 0 4px 0 4px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: black;
+            color: white;
+        }
     }
 
     .edit {
@@ -741,3 +740,190 @@ body {
     }
 }
 
+.required {
+    background-color: #373737;
+    border: solid rgb(0, 0, 0) 3px;
+    border-radius: 5px;
+    width: 250px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Fjalla One', sans-serif;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+
+
+.editProfileForm {
+    div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    }
+
+    #profile_form_email {
+        background-color: #394853;
+        border: solid rgb(0, 0, 0) 3px;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        width: 250px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Fjalla One", sans-serif;
+        padding-left: 100px;
+        padding-right: 100px;
+        text-align: center;
+    }
+    
+    #profile_form_firstName {
+        background-color: #394853;
+        border: solid rgb(0, 0, 0) 3px;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+
+        width: 250px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Fjalla One", sans-serif;
+        padding-left: 100px;
+        padding-right: 100px;
+        text-align: center;
+    }
+    
+    #profile_form_lastName {
+        background-color: #394853;
+        border: solid rgb(0, 0, 0) 3px;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        width: 250px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Fjalla One", sans-serif;
+        padding-left: 100px;
+        padding-right: 100px;
+        text-align: center;
+    }
+    
+    #profile_form_phone {
+        background-color: #394853;
+        border: solid rgb(0, 0, 0) 3px;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        width: 250px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Fjalla One", sans-serif;
+        padding-left: 100px;
+        padding-right: 100px;
+        text-align: center;
+    }
+    
+    #profile_form_plainPassword_first {
+        background-color: #394853;
+        border: solid rgb(0, 0, 0) 3px;
+
+        width: 250px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Fjalla One", sans-serif;
+        padding-left: 100px;
+        padding-right: 100px;
+        text-align: center;
+    }
+    
+    #profile_form_plainPassword_second {
+        background-color: #394853;
+        border: solid rgb(0, 0, 0) 3px;
+  
+        width: 250px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Fjalla One", sans-serif;
+        padding-left: 100px;
+        padding-right: 100px;
+        text-align: center;
+    }
+
+    #profile_form {
+        display: flex;
+    flex-direction: column;
+    gap: 20px;
+    }
+}
+#car_form_brand {
+        background-color: #394853;
+    border: solid rgb(0, 0, 0) 3px;
+    border-radius: 5px;
+    width: 250px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Fjalla One', sans-serif;
+    padding-left: 100px;
+    padding-right: 100px;
+    text-align: center;
+}
+
+#car_form_seats {
+    background-color: #394853;
+        border: solid rgb(0, 0, 0) 3px;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        width: 250px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Fjalla One", sans-serif;
+        padding-left: 100px;
+        padding-right: 100px;
+        text-align: center;
+}
+
+#car_form_model {
+    background-color: #394853;
+        border: solid rgb(0, 0, 0) 3px;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        width: 250px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Fjalla One", sans-serif;
+        padding-left: 100px;
+        padding-right: 100px;
+        text-align: center;
+}
+
+.boutonRedirect {
+    margin-top: 55px;
+    background-color: rgb(0, 0, 0);
+    border-radius: 4px;
+    width: 150px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Fjalla One", sans-serif;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    padding: 0 4px 0 4px;
+    cursor: pointer;
+
+}

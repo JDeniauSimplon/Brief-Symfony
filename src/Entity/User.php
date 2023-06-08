@@ -44,8 +44,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $created = null;
 
-    #[ORM\OneToOne(mappedBy: 'owner', cascade: ['persist', 'remove'])]
-    private ?Car $car = null;
+    #[ORM\OneToMany(mappedBy: 'owner', targetEntity: Car::class)]
+    private Collection $cars;
 
     #[ORM\OneToMany(mappedBy: 'passenger', targetEntity: Reservation::class)]
     private Collection $reservations;
@@ -58,6 +58,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function __construct()
     {
+        $this->cars = new ArrayCollection();
         $this->reservations = new ArrayCollection();
         $this->rides = new ArrayCollection();
         $this->rules = new ArrayCollection();
@@ -181,19 +182,32 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getCar(): ?Car
+    /**
+     * @return Collection|Car[]
+     */
+    public function getCars(): Collection
     {
-        return $this->car;
+        return $this->cars;
     }
 
-    public function setCar(Car $car): self
+    public function addCar(Car $car): self
     {
-        // set the owning side of the relation if necessary
-        if ($car->getOwner() !== $this) {
+        if (!$this->cars->contains($car)) {
+            $this->cars[] = $car;
             $car->setOwner($this);
         }
 
-        $this->car = $car;
+        return $this;
+    }
+
+    public function removeCar(Car $car): self
+    {
+        if ($this->cars->removeElement($car)) {
+            // set the owning side to null (unless already changed)
+            if ($car->getOwner() === $this) {
+                $car->setOwner(null);
+            }
+        }
 
         return $this;
     }
@@ -288,3 +302,4 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 }
+

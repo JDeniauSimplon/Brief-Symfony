@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block homeTitle %}
+    {{ homeTitle }}
+{% endblock %}
+
+{% block body %}
+    <div class="ridesContainer">
+        <table>
+            <tr>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Seats</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            {% for car in cars %}
+                <tr>
+                    <td>{{ car.brand }}</td>
+                    <td>{{ car.model }}</td>
+                    <td>{{ car.seats }}</td>
+                    <td><a href="{{ path('app_profil_edit_car', {'id': car.id}) }}">Edit</a></td>
+                    <td><a href="{{ path('app_profil_delete_car', {'id': car.id}) }}">Delete</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+        <div class="editProfileForm">
+            {{ form_start(carForm) }}
+            {{ form_widget(carForm) }}
+            <button type="submit">Mettre à jour</button>
+            {{ form_end(carForm) }}
+        </div>
+    </div>
+{% endblock %}

@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
 class Car
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\GeneratedValue(strategy: "IDENTITY")]
+    #[ORM\Column(type: "integer")]
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
@@ -26,7 +26,7 @@ class Car
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $created = null;
 
-    #[ORM\OneToOne(targetEntity: User::class, inversedBy: 'car', cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'cars')]
     #[ORM\JoinColumn(nullable: true)]
     private ?User $owner = null;
 
@@ -88,10 +88,11 @@ class Car
         return $this->owner;
     }
 
-    public function setOwner(user $owner): self
+    public function setOwner(?user $owner): self
     {
         $this->owner = $owner;
 
         return $this;
     }
 }
+

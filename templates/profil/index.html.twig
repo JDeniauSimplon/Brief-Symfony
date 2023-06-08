@@ -42,11 +42,11 @@
 				</div>
 				<div class="informationsLine">
 					<span class="informationName">MOT DE PASSE</span>
-					<span class="actualInformation">{{ app.user.password }}</span>
+					<span class="actualInformation">***************</span>
 
 				</div>
 
-				<a class="boutonRedirect" href="{{ path('app_profil_edit') }}">Modifier une ligne</a>
+				<a class="boutonRedirect" href="{{ path('app_profil_informations') }}">Modifier une ligne</a>
 			</div>
 		</div>
 
@@ -58,7 +58,11 @@
 				<a href="#monProfil" class="listeBouton">Mon profil ⚙️</a>
 			</section>
 		</section>
-		<div class="driverInformations"></div>
+		<div class="driverInformations"><div class="driverLogoInformations"></div>
+			
+				<a class="boutonRedirect" href="{{ path('app_profil_rides') }}">Ajoutez un trajet</a>
+			</div>
+	
 		<section class="boiteSwitchButtons" id="monVéhicule">
 			<section class="switchButtons">
 				<p class="monProfil">Mon véhicule 🚗</p>
@@ -67,7 +71,10 @@
 				<a href="#mesTrajets" class="listeBouton">Mes trajets 📍</a>
 			</section>
 		</section>
-		<div class="driverInformations"></div>
+				<div class="driverInformations"><div class="driverLogoInformations"></div>
+			
+				<a class="boutonRedirect" href="{{ path('app_profil_car') }}">Ajoutez, supprimer ou modifier un véhicule</a>
+			</div>
 		<section class="boiteSwitchButtons" id="mesRègles">
 			<section class="switchButtons">
 				<p class="monProfil">Mes règles 📜</p>
@@ -76,6 +83,9 @@
 				<a href="#monVéhicule" class="listeBouton">Mon véhicule 🚗</a>
 			</section>
 		</section>
-		<div class="driverInformations"></div>
+				<div class="driverInformations"><div class="driverLogoInformations"></div>
+			
+				<a class="boutonRedirect" href="{{ path('app_profil_car') }}">Ajoutez, supprimer ou modifier un véhicule</a>
+			</div>
 
 	{% endblock %}
