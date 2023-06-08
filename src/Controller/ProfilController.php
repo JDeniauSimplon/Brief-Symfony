@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\User;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -29,26 +30,30 @@ class ProfilController extends AbstractController
     }
 
     #[Route('/profil/rides', name: 'app_profil_rides')]
-    public function createRide(Request $request, EntityManagerInterface $entityManager): Response
-{
-    $ride = new Ride();
+    public function createRide(Request $request, EntityManagerInterface $entityManager, Security $security): Response
+    {
+        $ride = new Ride();
 
-    $form = $this->createForm(RideFormType::class, $ride);
-    $form->handleRequest($request);
+        // Set the driver (current user) as the driver of the ride
+        $user = $security->getUser();
+        $ride->setDriver($user);
 
-    if ($form->isSubmitted() && $form->isValid()) {
-        $entityManager->persist($ride);
-        $entityManager->flush();
+        $form = $this->createForm(RideFormType::class, $ride);
+        $form->handleRequest($request);
 
-        // Ajoutez un message flash ou toute autre logique de notification pour informer l'utilisateur de l'opération réussie
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($ride);
+            $entityManager->flush();
 
-        return $this->redirectToRoute('app_profil_rides');
+            // Ajoutez un message flash ou toute autre logique de notification pour informer l'utilisateur de l'opération réussie
+
+            return $this->redirectToRoute('app_profil_rides');
+        }
+
+        return $this->render('profil/rides/create.html.twig', [
+            'rideForm' => $form->createView(),
+        ]);
     }
-
-    return $this->render('profil/rides/create.html.twig', [
-        'rideForm' => $form->createView(),
-    ]);
-}
 
     #[Route('/profil/car', name: 'app_profil_car', methods: ["GET", "POST"])]
     public function manageCar(Request $request, EntityManagerInterface $entityManager): Response
