@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,19 +16,104 @@ use App\Entity\Car;
 use App\Form\CarFormType;
 use App\Form\RideFormType;
 use App\Entity\Ride;
+use App\Entity\Rule;
+use App\Form\RuleFormType;
 
 class ProfilController extends AbstractController
 {
     #[Route('/profil', name: 'app_profil')]
-    public function index(): Response
-    {
-        $user = $this->getUser();
-        $cars = $user->getCars();
+public function index(): Response
+{
+    $user = $this->getUser();
+    $cars = $this->getUser()->getCars();
+    $rules =  $this->getUser()->getRules();
+    $rides = $this->getUser()->getRides();
 
-        return $this->render('profil/index.html.twig', [
-            'cars' => $cars,
-        ]);
+    return $this->render('profil/index.html.twig', [
+        'cars' => $cars,
+        'rides' => $rides,
+        'rules' => $rules,
+    ]);
+}
+
+#[Route('/profil/{id}', name: 'app_profil_show')]
+public function show(User $user): Response
+{
+    $currentUser = $this->getUser();
+
+    // Vérifiez si l'utilisateur connecté est autorisé à afficher le profil
+    if ($currentUser !== $user) {
+        throw new AccessDeniedException("Vous n'êtes pas autorisé à accéder à ce profil.");
     }
+
+    // Affichez le profil de l'utilisateur
+    return $this->render('profil/show.html.twig', [
+        'user' => $user,
+    ]);
+}
+
+
+#[Route('/profil/rules', name: 'app_profil_rules')]
+public function createRule(Request $request, EntityManagerInterface $entityManager): Response
+{
+    $user = $this->getUser(); // Récupérer l'utilisateur actuellement connecté
+
+    $rule = new Rule();
+    $rule->setAuthor($user); // Définir l'auteur de la règle
+
+    $form = $this->createForm(RuleFormType::class, $rule);
+    $form->handleRequest($request);
+
+    if ($form->isSubmitted() && $form->isValid()) {
+        $entityManager->persist($rule);
+        $entityManager->flush();
+
+        // Ajoutez un message flash ou toute autre logique de notification pour informer l'utilisateur de l'opération réussie
+
+        return $this->redirectToRoute('app_profil');
+    }
+
+    $rules = $user->getRules(); // Récupérer les règles de l'utilisateur connecté
+
+    return $this->render('profil/rules/create.html.twig', [
+        'ruleForm' => $form->createView(),
+        'rules' => $rules, // Passer les règles à la vue
+    ]);
+}
+
+#[Route('/profil/rules/{id}/edit', name: 'app_profil_rules_edit')]
+public function editRule(Request $request, EntityManagerInterface $entityManager, Rule $rule): Response
+{
+    $form = $this->createForm(RuleFormType::class, $rule);
+    $form->handleRequest($request);
+
+    if ($form->isSubmitted() && $form->isValid()) {
+        $entityManager->flush();
+
+        // Ajoutez un message flash ou toute autre logique de notification pour informer l'utilisateur de l'opération réussie
+
+        return $this->redirectToRoute('app_profil_rules');
+    }
+
+    $user = $this->getUser();
+    $rules = $user->getRules();
+
+    return $this->render('profil/rules/edit.html.twig', [
+        'ruleForm' => $form->createView(),
+        'rules' => $rules,
+    ]);
+}
+
+#[Route('/profil/rules/{id}/delete', name: 'app_profil_rules_delete')]
+public function deleteRule(EntityManagerInterface $entityManager, Rule $rule): Response
+{
+    $entityManager->remove($rule);
+    $entityManager->flush();
+
+    // Ajoutez un message flash ou toute autre logique de notification pour informer l'utilisateur de l'opération réussie
+
+    return $this->redirectToRoute('app_profil_rules');
+}
 
     #[Route('/profil/rides', name: 'app_profil_rides')]
     public function createRide(Request $request, EntityManagerInterface $entityManager, Security $security): Response
@@ -50,9 +136,56 @@ class ProfilController extends AbstractController
             return $this->redirectToRoute('app_profil_rides');
         }
 
+        $rides = $entityManager->getRepository(Ride::class)->findBy(['driver' => $user]);
+
         return $this->render('profil/rides/create.html.twig', [
             'rideForm' => $form->createView(),
+            'rides' => $rides,
         ]);
+    }
+#[Route('/profil/rides/{id}', name: 'app_profil_rides_detail')]
+public function rideDetail(Request $request, Ride $ride, EntityManagerInterface $entityManager): Response
+{
+    // Récupérez tous les trajets pour afficher une liste dans la vue
+    $rides = $entityManager->getRepository(Ride::class)->findAll();
+
+    return $this->render('profil/rides/detail.html.twig', [
+        'ride' => $ride,
+        'rides' => $rides,
+    ]);
+}
+    #[Route('/profil/rides/{id}/edit', name: 'app_profil_rides_edit')]
+    public function editRide(Request $request, EntityManagerInterface $entityManager, Ride $ride): Response
+    {
+        $form = $this->createForm(RideFormType::class, $ride);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+
+            // Ajoutez un message flash ou toute autre logique de notification pour informer l'utilisateur de l'opération réussie
+
+            return $this->redirectToRoute('app_profil_rides');
+        }
+
+        $user = $this->getUser();
+        $rides = $entityManager->getRepository(Ride::class)->findBy(['driver' => $user]);
+
+        return $this->render('profil/rides/create.html.twig', [
+            'rideForm' => $form->createView(),
+            'rides' => $rides,
+        ]);
+    }
+
+    #[Route('/profil/rides/{id}/delete', name: 'app_profil_rides_delete')]
+    public function deleteRide(EntityManagerInterface $entityManager, Ride $ride): Response
+    {
+        $entityManager->remove($ride);
+        $entityManager->flush();
+
+        // Ajoutez un message flash ou toute autre logique de notification pour informer l'utilisateur de l'opération réussie
+
+        return $this->redirectToRoute('app_profil_rides');
     }
 
     #[Route('/profil/car', name: 'app_profil_car', methods: ["GET", "POST"])]
@@ -152,3 +285,4 @@ class ProfilController extends AbstractController
         ]);
     }
 }
+
