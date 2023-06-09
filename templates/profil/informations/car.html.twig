@@ -6,30 +6,33 @@
 
 {% block body %}
     <div class="ridesContainer">
-        <table>
+
+        <div class="editProfileForm">
+            {{ form_start(carForm) }}
+            {{ form_widget(carForm) }}
+            <button type="submit">Mettre à jour</button>
+            {{ form_end(carForm) }}
+                    <table>
             <tr>
-                <th>Brand</th>
-                <th>Model</th>
-                <th>Seats</th>
-                <th>Edit</th>
-                <th>Delete</th>
+                <th>Marque</th>
+                <th>Modèle</th>
+                <th>Places</th>
+                <th></th>
+                <th></th>
             </tr>
             {% for car in cars %}
                 <tr>
                     <td>{{ car.brand }}</td>
                     <td>{{ car.model }}</td>
                     <td>{{ car.seats }}</td>
-                    <td><a href="{{ path('app_profil_edit_car', {'id': car.id}) }}">Edit</a></td>
-                    <td><a href="{{ path('app_profil_delete_car', {'id': car.id}) }}">Delete</a></td>
+                    <td><a class="boutonRedirect" href="{{ path('app_profil_edit_car', {'id': car.id}) }}">Modifier</a></td>
+                    <td><a class="boutonRedirect" href="{{ path('app_profil_delete_car', {'id': car.id}) }}">Supprimer</a></td>
                 </tr>
             {% endfor %}
         </table>
-        <div class="editProfileForm">
-            {{ form_start(carForm) }}
-            {{ form_widget(carForm) }}
-            <button type="submit">Mettre à jour</button>
-            {{ form_end(carForm) }}
+             <a class="boutonRedirect" href="{{ path('app_profil') }}#monVéhicule">Retour au profil</a>
         </div>
-             <a class="boutonRedirect" href="{{ path('app_profil') }}">Retour au profil</a>
+            
     </div>
+    
 {% endblock %}

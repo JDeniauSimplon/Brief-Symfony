@@ -128,11 +128,12 @@ body {
             display: flex;
             flex-direction: row;
             align-items: center;
+            padding-right: 10px;
 
 
 
             .searchInput {
-                height: 50px;
+                height: 35px;
                 width: 70%;
                 border-top-left-radius: 10px;
                 border-bottom-left-radius: 10px;
@@ -149,7 +150,7 @@ body {
                 border-top-right-radius: 10px;
                 border-bottom-right-radius: 10px;
                 outline: none;
-                height: 50px;
+                height: 35px;
                 border: none;
                 padding-right: 10px;
 
@@ -158,9 +159,10 @@ body {
                     background-position: center;
                     background-repeat: no-repeat;
                     background-size: cover;
-                    width: 32px;
-                    height: 32px;
+                    width: 20px;
+                    height: 20px;
                     cursor: pointer;
+                
 
                     &:hover {
                         transform: scale(1.05);
@@ -286,6 +288,32 @@ body {
     align-content: flex-start;
     border: solid white 4px;
 
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+     
+      }
+
+
+      th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+        background-color: #f5f5f5;
+      }
+      
+      th {
+        background-color: #f2f2f2;
+      }
+      
+
+      
+      p {
+        text-align: center;
+      }
+      
+
     h1 {
         font-family: "Fjalla One", sans-serif;
     }
@@ -388,7 +416,7 @@ body {
         }
 
         .halfCard1 {
-            width: 300px;
+            width: 289px;
             padding: 19px;
             background-color: #1f6479;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -593,7 +621,6 @@ body {
 
 .driverInformations {
     width: 100%;
-    min-height: 551px;
     height: auto;
     padding: 70px;
     background-color: #ffffff;
@@ -605,6 +632,30 @@ body {
 
     align-items: center;
 
+    table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      
+      th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      
+      th {
+        background-color: #f2f2f2;
+      }
+      
+      tr:hover {
+        background-color: #f5f5f5;
+      }
+      
+      p {
+        text-align: center;
+      }
+      
+
     .driverLogoInformations {
         background-image: url(/assets/images/driver.svg);
         background-position: center;
@@ -614,8 +665,40 @@ body {
         height: 122px;
     }
 
+    .rulesLogoInformations {
+        background-image: url(/assets/images/rules.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 127px;
+        height: 159px;
+    }
+    
+
+    .trajetLogoInformations {
+        background-image: url(/assets/images/trajet.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 121px;
+        height: 122px;
+        
+    }
+
+    .carLogoInformations {
+        background-image: url(/assets/images/voiture.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 246px;
+        height: 122px;
+
+        
+    }
+
+
     .driverFullName {
-        background-color: #394853;
+        background-color: #5d7ba4;
         border: solid rgb(0, 0, 0) 3px;
         border-radius: 10px;
         width: 352px;
@@ -630,7 +713,7 @@ body {
     .driverFullInformations {
         display: flex;
         flex-direction: column;
-        padding-left: 62px;
+
         align-items: center;
 
 
@@ -647,17 +730,17 @@ body {
     }
 
     .informationName {
-        background-color: #373737;
+        background-color: #d2d2d2;
         border: solid rgb(0, 0, 0) 3px;
         border-radius: 5px;
-        width: 250px;
-        height: 50px;
+        width: 90px;
+        height: 33px;
         display: flex;
         justify-content: center;
         align-items: center;
-        font-family: 'Fjalla One', sans-serif;
-        padding-left: 100px;
-        padding-right: 100px;
+        font-family: "Fjalla One", sans-serif;
+        padding-left: 10px;
+        padding-right: 10px;
 
     }
 
@@ -665,18 +748,18 @@ body {
 
 
 
-        background-color: #394853;
-        border: solid rgb(0, 0, 0) 3px;
-        border-radius: 5px;
-        width: 250px;
-        height: 50px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: 'Fjalla One', sans-serif;
-        padding-left: 100px;
-        padding-right: 100px;
-        text-align: center;
+        background-color: #5d7ba4;
+    border: solid rgb(0, 0, 0) 3px;
+    border-radius: 5px;
+    width: 250px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Fjalla One", sans-serif;
+    /* padding-left: 100px; */
+    /* padding-right: 100px; */
+    text-align: center;
 
     }
 
@@ -741,11 +824,9 @@ body {
 }
 
 .required {
-    background-color: #373737;
-    border: solid rgb(0, 0, 0) 3px;
-    border-radius: 5px;
+  
     width: 250px;
-    height: 50px;
+ 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -760,162 +841,59 @@ body {
     div {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 15px;
     }
 
-    #profile_form_email {
-        background-color: #394853;
-        border: solid rgb(0, 0, 0) 3px;
-        border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 5px;
-        width: 250px;
-        height: 50px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: "Fjalla One", sans-serif;
-        padding-left: 100px;
-        padding-right: 100px;
-        text-align: center;
-    }
-    
-    #profile_form_firstName {
-        background-color: #394853;
-        border: solid rgb(0, 0, 0) 3px;
-        border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 5px;
 
-        width: 250px;
-        height: 50px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: "Fjalla One", sans-serif;
-        padding-left: 100px;
-        padding-right: 100px;
-        text-align: center;
-    }
     
-    #profile_form_lastName {
-        background-color: #394853;
-        border: solid rgb(0, 0, 0) 3px;
-        border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 5px;
-        width: 250px;
-        height: 50px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: "Fjalla One", sans-serif;
-        padding-left: 100px;
-        padding-right: 100px;
-        text-align: center;
-    }
-    
-    #profile_form_phone {
-        background-color: #394853;
-        border: solid rgb(0, 0, 0) 3px;
-        border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 5px;
-        width: 250px;
-        height: 50px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: "Fjalla One", sans-serif;
-        padding-left: 100px;
-        padding-right: 100px;
-        text-align: center;
-    }
-    
-    #profile_form_plainPassword_first {
-        background-color: #394853;
-        border: solid rgb(0, 0, 0) 3px;
 
-        width: 250px;
-        height: 50px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: "Fjalla One", sans-serif;
-        padding-left: 100px;
-        padding-right: 100px;
-        text-align: center;
-    }
-    
-    #profile_form_plainPassword_second {
-        background-color: #394853;
-        border: solid rgb(0, 0, 0) 3px;
-  
-        width: 250px;
-        height: 50px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: "Fjalla One", sans-serif;
-        padding-left: 100px;
-        padding-right: 100px;
-        text-align: center;
-    }
 
     #profile_form {
         display: flex;
     flex-direction: column;
     gap: 20px;
     }
+
+    button {
+        margin-top: 55px;
+        background-color: rgb(0, 0, 0);
+        border-radius: 4px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Fjalla One", sans-serif;
+        text-decoration: none;
+        color: rgb(255, 255, 255);
+        padding: 0 4px 0 4px;
+        cursor: pointer;
+    }
 }
-#car_form_brand {
-        background-color: #394853;
-    border: solid rgb(0, 0, 0) 3px;
-    border-radius: 5px;
-    width: 250px;
-    height: 50px;
+
+
+.boutonRedirect {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: rgb(0, 0, 0);
+    border-radius: 4px;
+    height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Fjalla One', sans-serif;
-    padding-left: 100px;
-    padding-right: 100px;
-    text-align: center;
+    font-family: "Fjalla One", sans-serif;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    padding: 0 4px 0 4px;
+    cursor: pointer;
+    border: none;
+    font-size: 15px;
+
 }
 
-#car_form_seats {
-    background-color: #394853;
-        border: solid rgb(0, 0, 0) 3px;
-        border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 5px;
-        width: 250px;
-        height: 50px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: "Fjalla One", sans-serif;
-        padding-left: 100px;
-        padding-right: 100px;
-        text-align: center;
-}
-
-#car_form_model {
-    background-color: #394853;
-        border: solid rgb(0, 0, 0) 3px;
-        border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 5px;
-        width: 250px;
-        height: 50px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: "Fjalla One", sans-serif;
-        padding-left: 100px;
-        padding-right: 100px;
-        text-align: center;
-}
-
-.boutonRedirect {
-    margin-top: 55px;
+.boutonRedirectForm {
+    margin-top: 5px;
     background-color: rgb(0, 0, 0);
     border-radius: 4px;
-    width: 150px;
     height: 30px;
     display: flex;
     justify-content: center;
@@ -927,3 +905,321 @@ body {
     cursor: pointer;
 
 }
+
+input {
+    height : 25px
+}
+
+.ridesContainerDetail {
+    display: flex;
+    background-color: grey;
+    margin: 72px 20px 20px 20px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    overflow-x: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: calc(100% - 92px);
+    flex-wrap: wrap;
+    width: 97%;
+    border: solid white 4px;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      
+      th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      
+      th {
+        background-color: #f2f2f2;
+      }
+      
+      tr:hover {
+        background-color: #f5f5f5;
+      }
+      
+      p {
+        text-align: center;
+      }
+      
+
+    h1 {
+        font-family: "Fjalla One", sans-serif;
+    }
+
+    // style pour les boutons de switch entre les annonces et la page d'accueil
+
+    .boiteSwitchButtons {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        padding-left: 10px;
+        padding-bottom: 10px;
+
+
+        .switchButtons {
+            display: flex;
+            gap: 10px;
+            padding-top: 10px;
+
+            a {
+                text-decoration: none;
+                color: black;
+            }
+
+            .accueilBouton {
+                background-color: white;
+                border: solid rgb(0, 0, 0) 3px;
+                border-radius: 4px;
+                width: 151px;
+                height: 30px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-family: 'Fjalla One', sans-serif;
+
+                &:hover {
+                    background-color: black;
+                    color: white;
+                    border: solid rgb(255, 255, 255) 3px;
+                }
+
+            }
+
+            .listeBouton {
+                background-color: white;
+                border: solid rgb(0, 0, 0) 3px;
+                border-radius: 4px;
+                width: 151px;
+                height: 30px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-family: 'Fjalla One', sans-serif;
+
+
+            }
+        }
+
+        .monProfil {
+            background-color: rgb(0, 0, 0);
+            border: solid rgb(255, 255, 255) 3px;
+            border-radius: 4px;
+            width: 151px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Fjalla One', sans-serif;
+            color: white;
+
+        }
+    }
+
+    // Style pour les cartes de trajets
+
+    .card {
+        display: flex;
+        margin: 20px;
+
+        a {
+            background-image: url(/assets/images/infoIcon.svg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 53px;
+            height: 53px;
+            border-radius: 30px;
+
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+
+        p {
+            font-family: 'Fjalla One', sans-serif;
+        }
+
+        h3 {
+            font-family: 'Fjalla One', sans-serif;
+        }
+
+        .halfCard1 {
+            width: 289px;
+            padding: 19px;
+            background-color: #1f6479;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-top-left-radius: 7px;
+            border-bottom-left-radius: 7px;
+            border-bottom: solid black 4px;
+            border-top: solid black 4px;
+            border-left: solid black 4px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 6px;
+
+            .trajetContainer {
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+                padding-top: 10px;
+
+                .blockCity {
+                    h3 {
+                        font-size: 20px;
+                        width: 200px;
+                        height: 26px;
+                        background-color: #ffffff;
+                        border-radius: 3px;
+                        padding: 2px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+
+                    p {
+                        margin-right: 5px;
+                        margin-top: 10px;
+                    }
+
+                    span {
+                        margin-right: 5px;
+                    }
+
+                }
+            }
+
+            .dateDepart {
+                display: flex;
+            }
+        }
+
+        .halfCard2 {
+            width: 283px;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-top-right-radius: 7px;
+            border-bottom-right-radius: 7px;
+            border: solid black 4px;
+            display: flex;
+            flex-direction: column;
+        
+            gap: 15px;
+.driverRules {
+    background-color: rgb(171, 166, 166);
+    border-radius: 4px;
+
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Fjalla One", sans-serif;
+}
+
+.rulesContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    p {
+        background-color: rgb(238, 255, 143);
+    }
+}
+
+            .bottomDriverCard {
+                display: flex;
+                align-items: flex-end;
+                justify-content: space-between;
+                margin-top: 18px;
+            }
+
+            .driverCard {
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+
+
+                .driverLogo {
+                    background-image: url(/assets/images/driver.svg);
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    width: 57px;
+                    height: 56px;
+                }
+
+                .blockDriver {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 10px;
+
+                    .driverName {
+                        background-color: grey;
+                        border-radius: 4px;
+                        width: 151px;
+                        height: 30px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        font-family: 'Fjalla One', sans-serif;
+                    }
+                }
+            }
+        }
+
+        .carLogoContainer {
+            display: flex;
+            height: 100%;
+            align-items: flex-end;
+
+            .carLogo {
+                background-image: url(/assets/images/car.svg);
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                width: 31px;
+                height: 25px;
+                position: absolute;
+                margin-left: 8px;
+                margin-bottom: 10px;
+            }
+        }
+
+        .trajetLogoContainer {
+            display: flex;
+            height: 100%;
+            align-items: center;
+
+            .trajetLogo {
+                background-image: url(/assets/images/trajet.svg);
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                width: 16px;
+                height: 118px;
+                position: absolute;
+                margin-left: 15px;
+                margin-bottom: 110px;
+            }
+        }
+
+    }
+}
+
+

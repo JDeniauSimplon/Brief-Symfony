@@ -9,10 +9,7 @@
             {{ form_widget(rideForm) }}
             <button type="submit">Créer un trajet</button>
             {{ form_end(rideForm) }}
-        </div>
-        {{ form_errors(rideForm) }}
-         <h2>Liste des trajets</h2>
-    <table>
+                <table>
     <tr>
   
         <th>Départ</th>
@@ -32,14 +29,17 @@
             <td>{{ ride.price }}</td>
             <td>{{ ride.date|date('Y-m-d H:i:s') }}</td>
             <td>
-                <a href="{{ path('app_profil_rides_edit', {'id': ride.id}) }}">Modifier</a>
-                <a href="{{ path('app_profil_rides_delete', {'id': ride.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce trajet ?')">Supprimer</a>
+                <a class="boutonRedirectForm" href="{{ path('app_profil_rides_edit', {'id': ride.id}) }}">Modifier</a>
+                <a class="boutonRedirectForm" href="{{ path('app_profil_rides_delete', {'id': ride.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce trajet ?')">Supprimer</a>
             </td>
         </tr>
     {% endif %}
 {% endfor %}
+        </div>
+        {{ form_errors(rideForm) }}
+
 </table>
-     <a class="boutonRedirect" href="{{ path('app_profil') }}">Retour au profil</a>
+    <a class="boutonRedirect" href="{{ path('app_profil') }}#mesTrajets" class="btn">Retour au profil</a>
     </div>
 
    

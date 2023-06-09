@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Validator\UniqueCar;
 use App\Repository\CarRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -18,16 +19,17 @@ class Car
     private ?string $brand = null;
 
     #[ORM\Column(length: 50)]
-    private ?string $Model = null;
+    private ?string $model = null;
 
     #[ORM\Column]
-    private ?int $Seats = null;
+    private ?int $seats = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $created = null;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'cars')]
     #[ORM\JoinColumn(nullable: true)]
+    #[UniqueCar(message: "Un utilisateur ne peut avoir qu'une seule voiture.")]
     private ?User $owner = null;
 
     public function getId(): ?int

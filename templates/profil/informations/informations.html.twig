@@ -10,8 +10,11 @@
         <div class="editProfileForm">
             {{ form_start(form) }}
             {{ form_widget(form) }}
-            <button type="submit">Mettre à jour</button>
+            <button class="boutonRedirect" type="submit">Mettre à jour</button>
+                  <a class="boutonRedirect" href="{{ path('app_profil') }}#monProfil">Retour au profil</a>
+                  
             {{ form_end(form) }}
+       
         </div>
-        <a class="boutonRedirect" href="{{ path('app_profil') }}">Retour au profil</a>
+       
 	{% endblock %}

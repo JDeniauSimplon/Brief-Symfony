@@ -22,9 +22,10 @@
             </div>
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-            <button class="btn btn-lg btn-primary" type="submit">
+            <button class="boutonRedirect" type="submit">
                 Se connecter
-            </button>
+            </button> <p> ou </p>
+            <a class="boutonRedirect" href="{{ path('app_register') }}" class="btn">S'inscrire</a>
         </form>
     </div>
 {% endblock %}

@@ -18,102 +18,85 @@ use App\Form\RideFormType;
 use App\Entity\Ride;
 use App\Entity\Rule;
 use App\Form\RuleFormType;
+use DateTimeImmutable;
 
 class ProfilController extends AbstractController
 {
     #[Route('/profil', name: 'app_profil')]
-public function index(): Response
-{
-    $user = $this->getUser();
-    $cars = $this->getUser()->getCars();
-    $rules =  $this->getUser()->getRules();
-    $rides = $this->getUser()->getRides();
+    public function index(): Response
+    {
+        $cars = $this->getUser()->getCars();
+        $rules =  $this->getUser()->getRules();
+        $rides = $this->getUser()->getRides();
 
-    return $this->render('profil/index.html.twig', [
-        'cars' => $cars,
-        'rides' => $rides,
-        'rules' => $rules,
-    ]);
-}
-
-#[Route('/profil/{id}', name: 'app_profil_show')]
-public function show(User $user): Response
-{
-    $currentUser = $this->getUser();
-
-    // Vérifiez si l'utilisateur connecté est autorisé à afficher le profil
-    if ($currentUser !== $user) {
-        throw new AccessDeniedException("Vous n'êtes pas autorisé à accéder à ce profil.");
+        return $this->render('profil/index.html.twig', [
+            'cars' => $cars,
+            'rides' => $rides,
+            'rules' => $rules,
+        ]);
     }
 
-    // Affichez le profil de l'utilisateur
-    return $this->render('profil/show.html.twig', [
-        'user' => $user,
-    ]);
-}
+    #[Route('/profil/rules', name: 'app_profil_rules')]
+    public function createRule(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $user = $this->getUser(); // Récupérer l'utilisateur actuellement connecté
 
+        $rule = new Rule();
+        $rule->setAuthor($user); // Définir l'auteur de la règle
 
-#[Route('/profil/rules', name: 'app_profil_rules')]
-public function createRule(Request $request, EntityManagerInterface $entityManager): Response
-{
-    $user = $this->getUser(); // Récupérer l'utilisateur actuellement connecté
+        $form = $this->createForm(RuleFormType::class, $rule);
+        $form->handleRequest($request);
 
-    $rule = new Rule();
-    $rule->setAuthor($user); // Définir l'auteur de la règle
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($rule);
+            $entityManager->flush();
 
-    $form = $this->createForm(RuleFormType::class, $rule);
-    $form->handleRequest($request);
+            // Ajoutez un message flash ou toute autre logique de notification pour informer l'utilisateur de l'opération réussie
 
-    if ($form->isSubmitted() && $form->isValid()) {
-        $entityManager->persist($rule);
-        $entityManager->flush();
+            return $this->redirectToRoute('app_profil');
+        }
 
-        // Ajoutez un message flash ou toute autre logique de notification pour informer l'utilisateur de l'opération réussie
+        $rules = $user->getRules(); // Récupérer les règles de l'utilisateur connecté
 
-        return $this->redirectToRoute('app_profil');
+        return $this->render('profil/rules/create.html.twig', [
+            'ruleForm' => $form->createView(),
+            'rules' => $rules, // Passer les règles à la vue
+        ]);
     }
 
-    $rules = $user->getRules(); // Récupérer les règles de l'utilisateur connecté
+    #[Route('/profil/rules/{id}/edit', name: 'app_profil_rules_edit')]
+    public function editRule(Request $request, EntityManagerInterface $entityManager, Rule $rule): Response
+    {
+        $form = $this->createForm(RuleFormType::class, $rule);
+        $form->handleRequest($request);
 
-    return $this->render('profil/rules/create.html.twig', [
-        'ruleForm' => $form->createView(),
-        'rules' => $rules, // Passer les règles à la vue
-    ]);
-}
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
 
-#[Route('/profil/rules/{id}/edit', name: 'app_profil_rules_edit')]
-public function editRule(Request $request, EntityManagerInterface $entityManager, Rule $rule): Response
-{
-    $form = $this->createForm(RuleFormType::class, $rule);
-    $form->handleRequest($request);
+            // Ajoutez un message flash ou toute autre logique de notification pour informer l'utilisateur de l'opération réussie
 
-    if ($form->isSubmitted() && $form->isValid()) {
+            return $this->redirectToRoute('app_profil_rules');
+        }
+
+        $user = $this->getUser();
+        $rules = $user->getRules();
+
+        return $this->render('profil/rules/edit.html.twig', [
+            'ruleForm' => $form->createView(),
+            'rules' => $rules,
+        ]);
+    }
+
+    #[Route('/profil/rules/{id}/delete', name: 'app_profil_rules_delete')]
+    public function deleteRule(EntityManagerInterface $entityManager, Rule $rule): Response
+    {
+        $entityManager->remove($rule);
         $entityManager->flush();
 
         // Ajoutez un message flash ou toute autre logique de notification pour informer l'utilisateur de l'opération réussie
 
         return $this->redirectToRoute('app_profil_rules');
     }
-
-    $user = $this->getUser();
-    $rules = $user->getRules();
-
-    return $this->render('profil/rules/edit.html.twig', [
-        'ruleForm' => $form->createView(),
-        'rules' => $rules,
-    ]);
-}
-
-#[Route('/profil/rules/{id}/delete', name: 'app_profil_rules_delete')]
-public function deleteRule(EntityManagerInterface $entityManager, Rule $rule): Response
-{
-    $entityManager->remove($rule);
-    $entityManager->flush();
-
-    // Ajoutez un message flash ou toute autre logique de notification pour informer l'utilisateur de l'opération réussie
-
-    return $this->redirectToRoute('app_profil_rules');
-}
 
     #[Route('/profil/rides', name: 'app_profil_rides')]
     public function createRide(Request $request, EntityManagerInterface $entityManager, Security $security): Response
@@ -143,17 +126,19 @@ public function deleteRule(EntityManagerInterface $entityManager, Rule $rule): R
             'rides' => $rides,
         ]);
     }
-#[Route('/profil/rides/{id}', name: 'app_profil_rides_detail')]
-public function rideDetail(Request $request, Ride $ride, EntityManagerInterface $entityManager): Response
-{
-    // Récupérez tous les trajets pour afficher une liste dans la vue
-    $rides = $entityManager->getRepository(Ride::class)->findAll();
 
-    return $this->render('profil/rides/detail.html.twig', [
-        'ride' => $ride,
-        'rides' => $rides,
-    ]);
-}
+    #[Route('/profil/rides/{id}', name: 'app_profil_rides_detail')]
+    public function rideDetail(Request $request, Ride $ride, EntityManagerInterface $entityManager): Response
+    {
+        // Récupérez tous les trajets pour afficher une liste dans la vue
+        $rides = $entityManager->getRepository(Ride::class)->findAll();
+
+        return $this->render('profil/rides/detail.html.twig', [
+            'ride' => $ride,
+            'rides' => $rides,
+        ]);
+    }
+
     #[Route('/profil/rides/{id}/edit', name: 'app_profil_rides_edit')]
     public function editRide(Request $request, EntityManagerInterface $entityManager, Ride $ride): Response
     {
@@ -192,40 +177,42 @@ public function rideDetail(Request $request, Ride $ride, EntityManagerInterface 
     public function manageCar(Request $request, EntityManagerInterface $entityManager): Response
     {
         $car = new Car();
-        
+
         // Retrieve the current logged in user
         $user = $this->getUser();
-        
+
         // Set the owner of the car to the current user
         $car->setOwner($user);
-    
+
+        $car->setCreated(new DateTimeImmutable());
+
         $cars = $this->getUser()->getCars();
-    
+
         $form = $this->createForm(CarFormType::class, $car);
         $form->handleRequest($request);
-    
+
         if ($form->isSubmitted() && $form->isValid()) {
             // Check if a car with the same unique identifier already exists
             $existingCar = $entityManager->getRepository(Car::class)->findOneBy(['id' => $car->getId()]);
-    
+
             if ($existingCar) {
                 // Update the existing car with the submitted data
                 $existingCar->setBrand($car->getBrand());
                 $existingCar->setModel($car->getModel());
                 $existingCar->setSeats($car->getSeats());
-                // ... set other car properties
-                
+                $existingCar->setCreated($car->getCreated());
+
                 $entityManager->flush();
             } else {
                 // The car is new, persist it in the database
                 $entityManager->persist($car);
                 $entityManager->flush();
             }
-    
+
             // Add a flash message or something else to notify the user about the successful operation
             return $this->redirectToRoute('app_profil_car');
         }
-    
+
         return $this->render('profil/informations/car.html.twig', [
             'carForm' => $form->createView(),
             'cars' => $cars,
@@ -285,4 +272,5 @@ public function rideDetail(Request $request, Ride $ride, EntityManagerInterface 
         ]);
     }
 }
+
 

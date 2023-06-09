@@ -37,8 +37,8 @@ class ProfileFormType extends AbstractType
                 'invalid_message' => 'Les deux mots de passe doivent correspondre.',
                 'options' => ['attr' => ['autocomplete' => 'new-password']],
                 'required' => false,
-                'first_options'  => ['label' => 'Mot de passe'],
-                'second_options' => ['label' => 'Confirmer le mot de passe'],
+                'first_options'  => ['label' => 'Nouveau mot de passe'],
+                'second_options' => ['label' => 'Confirmer le nouveau mot de passe'],
                 'constraints' => [
                     new Assert\Length([
                         'min' => 6,
